@@ -1,12 +1,1171 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude POC</title>
+    <title>Claude Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0f1923;
+            --navy-light: #1a2836;
+            --navy-mid: #243444;
+            --white: #ffffff;
+            --off-white: #f5f6f8;
+            --coral: #e05a3a;
+            --coral-light: #fbe9e4;
+            --coral-dark: #c44a2e;
+            --text: #0f1923;
+            --text-secondary: #5a6670;
+            --border: #dde1e6;
+            --card: #ffffff;
+            --code-bg: #0f1923;
+            --code-text: #dde1e6;
+            --nav-height: 64px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--nav-height) + 32px);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-height);
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+        }
+
+        .nav-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            margin-right: 48px;
+            white-space: nowrap;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-logo span {
+            color: var(--coral);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+            overflow-x: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+            background: var(--off-white);
+        }
+
+        .nav-links a.active {
+            color: var(--coral);
+            background: var(--coral-light);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: auto;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--navy);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        main {
+            padding-top: calc(var(--nav-height) + 32px);
+            padding-bottom: 80px;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            background: var(--navy);
+            color: var(--white);
+            margin: 0 -24px;
+            padding: 72px 24px 56px;
+            margin-bottom: 48px;
+        }
+
+        .hero-inner {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.8px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        /* --- SECTIONS --- */
+        section { margin-bottom: 56px; }
+
+        section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            padding-top: 8px;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+        }
+
+        section .section-intro {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-size: 16px;
+        }
+
+        section h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 36px 0 10px;
+            color: var(--navy);
+        }
+
+        section h3:first-of-type { margin-top: 24px; }
+
+        section p { margin-bottom: 14px; }
+
+        /* --- CARDS --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--navy);
+        }
+
+        .card p, .card ul {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .card ul { list-style: none; padding: 0; }
+
+        .card ul li {
+            padding: 4px 0 4px 16px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+        }
+
+        .card.full-width { grid-column: 1 / -1; }
+
+        /* --- PROMPT EXAMPLES --- */
+        .prompt-example {
+            background: var(--code-bg);
+            color: var(--code-text);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 1.7;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .prompt-example .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .prompt-example .label.bad { color: #f07a5f; }
+        .prompt-example .label.good { color: #5ec4a0; }
+        .prompt-example .label.neutral { color: #e0a960; }
+
+        /* --- TIP BOXES --- */
+        .tip {
+            background: var(--coral-light);
+            border-left: 3px solid var(--coral);
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+
+        .tip strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--coral-dark);
+            font-weight: 700;
+        }
+
+        .tip.info {
+            background: #e8f0f8;
+            border-left-color: #3a7cbf;
+        }
+
+        .tip.info strong {
+            color: #2a5f8f;
+        }
+
+        /* --- HOLDING NOTICE --- */
+        .holding-notice {
+            background: var(--off-white);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            padding: 36px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .holding-notice .icon { font-size: 28px; margin-bottom: 12px; }
+        .holding-notice h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+        .holding-notice p { color: var(--text-secondary); font-size: 14px; margin-bottom: 0; }
+
+        /* --- DO / DON'T --- */
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .do-col, .dont-col {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .do-col h4 {
+            color: #2a8a62;
+            font-size: 13px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.8px;
+            margin-bottom: 12px;
+        }
+
+        .dont-col h4 {
+            color: var(--coral);
+            font-size: 13px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.8px;
+            margin-bottom: 12px;
+        }
+
+        .do-col li, .dont-col li {
+            font-size: 14px; margin-bottom: 8px; color: var(--text-secondary);
+            list-style: none; padding-left: 18px; position: relative;
+        }
+
+        .do-col li::before { content: "\2713"; color: #2a8a62; position: absolute; left: 0; font-weight: 700; }
+        .dont-col li::before { content: "\2717"; color: var(--coral); position: absolute; left: 0; font-weight: 700; }
+
+        /* --- STEPS --- */
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .steps li {
+            counter-increment: step;
+            padding: 16px 16px 16px 56px;
+            position: relative;
+            margin-bottom: 8px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 18px; top: 16px;
+            width: 26px; height: 26px;
+            background: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+        }
+
+        /* --- TABLE --- */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .compare-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .compare-table th:first-child { border-radius: 8px 0 0 0; }
+        .compare-table th:last-child { border-radius: 0 8px 0 0; }
+
+        .compare-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        /* --- DIVIDER --- */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 56px 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.5);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 700px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: var(--nav-height);
+                left: 0; right: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                padding: 16px 24px;
+                gap: 4px;
+            }
+            .nav-toggle { display: block; }
+            .hero h1 { font-size: 30px; }
+            .hero { padding: 48px 24px 40px; }
+            .card-grid, .do-dont { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <h1>It works</h1>
-    <p>Deployed from GitHub to Azure Static Web Apps.</p>
+
+<nav>
+    <a href="#top" class="nav-logo">Claude <span>Hub</span></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#prompting">Prompting</a></li>
+        <li><a href="#projects">Projects & Files</a></li>
+        <li><a href="#excel-pptx">Excel & PowerPoint</a></li>
+        <li><a href="#connectors">Connectors</a></li>
+        <li><a href="#cowork">Cowork</a></li>
+        <li><a href="#guidelines">Guidelines</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<main id="top">
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-inner">
+            <div class="badge">Pilot Program</div>
+            <h1>Claude Learning Hub</h1>
+            <p>A practical reference for the pilot group. Guides, prompt patterns, and working examples for management and finance teams getting started with Claude.</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+    <!-- GETTING STARTED -->
+    <section id="getting-started">
+        <h2>Getting Started</h2>
+        <p class="section-intro">How to access Claude and find your way around the interface.</p>
+
+        <ol class="steps">
+            <li>Go to <strong>claude.ai</strong> and sign in with your company email. SSO should log you in automatically.</li>
+            <li>You'll land on the chat interface. Type a message at the bottom and press Enter to start a conversation.</li>
+            <li>Your conversation history appears in the left sidebar. Each conversation is separate and independent.</li>
+            <li>To start fresh, click <strong>New Chat</strong>. Claude does not carry context between separate conversations.</li>
+        </ol>
+
+        <h3>The interface at a glance</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>Chat area</h4>
+                <p>The main window where your conversation happens. You type at the bottom, Claude responds above. You can attach files using the paperclip icon.</p>
+            </div>
+            <div class="card">
+                <h4>Sidebar</h4>
+                <p>Your conversation history and Projects. You can search past conversations and organise work into Projects for ongoing topics.</p>
+            </div>
+            <div class="card">
+                <h4>Model selector</h4>
+                <p>At the top of the chat you can choose which model to use. <strong>Sonnet</strong> is fast and good for most tasks. <strong>Opus</strong> is slower but stronger on complex reasoning and analysis.</p>
+            </div>
+            <div class="card">
+                <h4>File attachments</h4>
+                <p>Click the paperclip to attach PDFs, Word docs, Excel files, images, or CSVs. Claude reads the content and can work with it in its response.</p>
+            </div>
+        </div>
+
+        <div class="tip">
+            <strong>If you've used ChatGPT</strong>
+            The interface works similarly. The main differences are Projects (persistent context across conversations), different model names (Sonnet/Opus instead of GPT-4o), and how Claude handles longer documents. You'll pick it up quickly.
+        </div>
+
+        <h3>Your first conversation</h3>
+        <p>Start with something real from your day-to-day work. Don't test Claude with trivia or trick questions. It's most useful when you give it a genuine task with real context.</p>
+
+        <div class="prompt-example"><div class="label good">Finance starting point</div>I have a monthly management accounts pack that I present to the board. The pack includes P&amp;L, balance sheet, cash flow, and a narrative commentary. I spend about 3 hours writing the commentary each month.
+
+Here is last month's commentary [paste it]. And here is this month's data [attach the file].
+
+Draft this month's commentary in the same style and format. Flag anything that looks unusual compared to last month.</div>
+
+        <div class="prompt-example"><div class="label good">Management starting point</div>I need to prepare a briefing note for our CEO on the Q3 operational performance of our three business units. I'll give you the KPI dashboards for each unit.
+
+For each unit, summarise the top 3 things going well, the top 3 concerns, and any metrics that have moved more than 10% vs prior quarter. Keep the whole thing under 2 pages.
+
+[Attach the dashboards]</div>
+
+        <div class="prompt-example"><div class="label good">Quick productivity win</div>I have a meeting in 30 minutes with the Head of Procurement about consolidating our software vendors. Here are my rough notes [paste them].
+
+Turn these into:
+1. A clear agenda with time allocations
+2. The 3 key decisions we need to make
+3. A list of questions I should ask to understand their constraints</div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PROMPTING -->
+    <section id="prompting">
+        <h2>Prompting</h2>
+        <p class="section-intro">The quality of Claude's output depends directly on your input. These seven patterns will help you get consistently useful results.</p>
+
+        <h3>1. Give context before the task</h3>
+        <p>Claude knows nothing about you, your company, or your role. The more background you provide upfront, the less time you spend correcting the output afterwards.</p>
+
+        <div class="prompt-example"><div class="label bad">Without context</div>Write a variance analysis for Q3.</div>
+
+        <div class="prompt-example"><div class="label good">With context</div>I'm a Finance Manager at a mid-sized healthcare services company. I report to the CFO and present quarterly variance analysis to the board.
+
+Here is our Q3 actuals vs budget [attach file]. Write a variance analysis that covers:
+- Revenue variance by business unit (we have 3: Consulting, Clinical, and Digital)
+- The top 5 cost lines with the largest absolute variance
+- A brief explanation of what likely drove each variance
+- Recommended management actions where relevant
+
+Tone should be professional but direct. The board doesn't want padding. Keep it under 1,500 words.</div>
+
+        <div class="tip">
+            <strong>Why this matters</strong>
+            Without context, Claude writes something generic. With context, it writes something you can actually use. The 30 seconds you spend on a better prompt saves you 20 minutes of editing.
+        </div>
+
+        <h3>2. Assign a role</h3>
+        <p>Telling Claude who it should act as shapes the response significantly. A "management consultant" writes differently from a "financial controller" or a "communications manager".</p>
+
+        <div class="prompt-example"><div class="label good">Role examples</div>"You are a senior management consultant writing a client-facing deliverable."
+
+"You are a finance business partner reviewing this budget submission for reasonableness."
+
+"You are an internal comms lead drafting an all-hands email about organisational change."
+
+"You are a project manager writing a status update for a steering committee."
+
+"You are a strategy analyst preparing a competitive landscape overview for the leadership team."
+
+"You are a sceptical CFO reviewing a business case before committing capital."</div>
+
+        <h3>3. Specify the format</h3>
+        <p>If you have a template, house style, or specific structure, show Claude what it looks like. Claude is very good at matching existing formats when given an example.</p>
+
+        <div class="prompt-example"><div class="label good">Template matching</div>Write a project status update using this exact format:
+
+PROJECT: [name]
+STATUS: [Green / Amber / Red]
+PERIOD: [date range]
+
+SUMMARY
+[2-3 sentence overview]
+
+PROGRESS THIS PERIOD
+- [bullet points]
+
+RISKS &amp; ISSUES
+| Risk | Impact | Likelihood | Mitigation |
+
+NEXT PERIOD PRIORITIES
+- [bullet points with owners and dates]
+
+Here's the raw information to work from: [paste notes]</div>
+
+        <div class="prompt-example"><div class="label good">Controlling length and tone</div>Write this in 300 words or fewer.
+Use short paragraphs, no more than 3 sentences each.
+Tone: direct and professional, no filler language.
+Audience: C-suite who will skim this in 2 minutes.
+Lead with the conclusion, not the methodology.</div>
+
+        <h3>4. Iterate in the same conversation</h3>
+        <p>Your first prompt rarely produces the perfect output. That's normal. Stay in the same conversation and give Claude specific feedback.</p>
+
+        <div class="prompt-example"><div class="label neutral">Useful follow-ups</div>"Too long. Cut it to half the length. Remove the background section entirely."
+
+"Good structure but the tone is too casual. This is going to the audit committee."
+
+"The risk section is too vague. For each risk, add a specific data point or example from the attached file."
+
+"Rewrite the executive summary assuming the reader already knows the project context."
+
+"This is good. Now create a one-slide version I can use in a deck."
+
+"Add a 'so what' after each finding. What should management actually do about it?"
+
+"The numbers in paragraph 3 don't match the spreadsheet. Check cells B14 to B18 again."</div>
+
+        <div class="tip">
+            <strong>When to start over</strong>
+            If you've gone back and forth many times and the conversation has drifted, start a new chat. Paste the best version so far and give fresh instructions. Very long conversations can sometimes cause Claude to lose track of earlier guidance.
+        </div>
+
+        <h3>5. Use Claude for analysis, not just writing</h3>
+        <p>Claude is strong at reviewing documents, finding patterns, challenging assumptions, and structuring thinking.</p>
+
+        <div class="prompt-example"><div class="label good">Challenge a business case</div>I've attached a business case for a new CRM implementation. The project team is asking for &pound;2.4m over 3 years.
+
+Review this as if you were a sceptical CFO. Specifically:
+- Are the benefits quantified and realistic? Flag any that look inflated.
+- What costs might be missing? (implementation risk, change management, data migration, ongoing licensing)
+- Is the payback period calculation sound?
+- What questions would you ask the project team before approving?</div>
+
+        <div class="prompt-example"><div class="label good">Compare supplier proposals</div>I've attached two supplier proposals for the same scope of work.
+
+Create a comparison table: Scope coverage, Pricing structure, Team composition, Timeline, Key risks, Gaps.
+
+Then write a short recommendation (under 200 words) on which is stronger and why. Flag anywhere one supplier has committed to something specific and the other has been vague.</div>
+
+        <div class="prompt-example"><div class="label good">Interpret data</div>Here is our employee attrition data for the past 24 months [attach CSV].
+
+Identify:
+- Departments with attrition above 15% annualised
+- Whether there's a seasonal pattern to departures
+- Average tenure at departure, broken down by department
+- Any correlation between attrition spikes and the restructuring that happened in March 2024
+
+Present findings as a summary table, then a paragraph of interpretation. Don't soften bad news.</div>
+
+        <div class="prompt-example"><div class="label good">Stress-test assumptions</div>Here is our 3-year revenue forecast [attach]. The assumptions behind it are:
+- 8% organic growth per year
+- 90% client retention
+- 2 new client wins per quarter at average &pound;500k each
+
+Challenge each assumption. What would need to be true for it to hold? What's the downside scenario if each assumption is 20% worse than planned? Build me a sensitivity table showing the impact.</div>
+
+        <h3>6. Break complex tasks into steps</h3>
+        <p>For large tasks, don't try to do everything in one prompt. Build up through stages.</p>
+
+        <div class="prompt-example"><div class="label good">Step-by-step approach</div>Step 1: "Here's our strategic plan [attach]. Read it and confirm you understand the three pillars and the KPIs for each."
+
+Step 2: "Good. Now here's our Q3 performance data [attach]. Map the performance data to each pillar and assess whether we're on track."
+
+Step 3: "Draft a board paper presenting this assessment. Use the format I'll paste below."
+
+Step 4: "The CFO reviewed the draft and wants more emphasis on cash flow. Revise with that focus."
+
+Step 5: "Final version is good. Now write a 5-minute verbal briefing I can use to present it."</div>
+
+        <h3>7. Ready-to-use prompts for common tasks</h3>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>Meeting preparation</h4>
+                <p>"I have a meeting with [person] about [topic] in 2 hours. Here are my notes [paste]. Organise into an agenda, identify the 3 decisions we need to make, and draft the key questions I should ask."</p>
+            </div>
+            <div class="card">
+                <h4>Email drafting</h4>
+                <p>"Draft an email to [recipient] about [topic]. Key message is [x]. Tone: [professional/firm/collaborative]. I need to [request/deliver news/follow up]. Keep it under [x] sentences."</p>
+            </div>
+            <div class="card">
+                <h4>Board paper</h4>
+                <p>"Write a board paper recommending [x]. Include: executive summary, background, options considered, recommended option with rationale, financial impact, risks, and next steps. Here's the supporting data [attach]."</p>
+            </div>
+            <div class="card">
+                <h4>Monthly commentary</h4>
+                <p>"Here is this month's P&amp;L [attach]. Write the finance commentary covering: revenue vs budget, key cost movements, EBITDA bridge, cash position. Match last month's style [attach previous version]."</p>
+            </div>
+            <div class="card">
+                <h4>Presentation narrative</h4>
+                <p>"My slide deck [attach] has weak narrative flow. Review it, suggest a better story arc, and for each slide write 2-3 sentences of speaker notes connecting to the next slide."</p>
+            </div>
+            <div class="card">
+                <h4>Process documentation</h4>
+                <p>"I'll describe our month-end close process. Turn it into a document with numbered steps, responsible parties, timelines, dependencies, and handoff points between teams."</p>
+            </div>
+            <div class="card">
+                <h4>Stakeholder briefing</h4>
+                <p>"Brief [stakeholder] on [topic]. They have [x] minutes and care most about [priorities]. Lead with their concerns, keep detail to what's essential, and end with a clear ask."</p>
+            </div>
+            <div class="card">
+                <h4>Contract review</h4>
+                <p>"Review this contract [attach] commercially. Flag: unusual liability clauses, payment terms that differ from Net 30, auto-renewal provisions, termination restrictions, and scope ambiguity."</p>
+            </div>
+            <div class="card">
+                <h4>Competitor analysis</h4>
+                <p>"Research [competitor]. Summarise: what they do, key clients, positioning, recent news or leadership changes, and where they overlap with our services. Focus on facts, not speculation."</p>
+            </div>
+            <div class="card">
+                <h4>Interview preparation</h4>
+                <p>"I'm interviewing for [role]. Here's the CV [attach] and job spec [attach]. Draft 8 questions: 4 on technical competence, 4 on cultural fit. Include what a strong answer looks like."</p>
+            </div>
+            <div class="card">
+                <h4>Change communication</h4>
+                <p>"We're [describe change]. Draft three versions: one for leadership (strategic framing), one for all-staff (clear and reassuring), one for affected individuals (empathetic with specific next steps)."</p>
+            </div>
+            <div class="card">
+                <h4>Budget challenge</h4>
+                <p>"Here is [team]'s budget submission [attach]. Review as FP&amp;A. Flag: YoY increases above 5% without justification, headcount changes, discretionary spend, and any lines that look like placeholder numbers."</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PROJECTS & FILES -->
+    <section id="projects">
+        <h2>Projects & Files</h2>
+        <p class="section-intro">Projects give Claude persistent context so you don't have to re-explain your world every conversation.</p>
+
+        <h3>What is a Project?</h3>
+        <p>A Project is a workspace where you upload reference files, set standing instructions, and have multiple conversations that all share the same background. Think of it as giving Claude a briefing pack that stays available across every chat within that Project.</p>
+
+        <h3>When to use a Project vs a regular chat</h3>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Use a regular chat when...</th>
+                    <th>Use a Project when...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>One-off question or quick task</td>
+                    <td>Ongoing workstream spanning multiple sessions</td>
+                </tr>
+                <tr>
+                    <td>No background context needed</td>
+                    <td>Claude needs your terminology, style, or templates</td>
+                </tr>
+                <tr>
+                    <td>You won't refer back to this</td>
+                    <td>You want to build on previous work</td>
+                </tr>
+                <tr>
+                    <td>Simple drafting or brainstorming</td>
+                    <td>Recurring reporting, client work, or team tasks</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Setting up a Project</h3>
+        <ol class="steps">
+            <li>Click <strong>Projects</strong> in the left sidebar, then <strong>New Project</strong>.</li>
+            <li>Give it a clear name (e.g. "Q4 Board Reporting", "Client ABC", "Monthly Close Process").</li>
+            <li>Add <strong>Project Instructions</strong>. This is the standing brief Claude references in every conversation within the Project.</li>
+            <li>Upload reference files: templates, past reports, style guides, org charts, glossaries.</li>
+            <li>Start a conversation inside the Project. Claude has access to everything you've uploaded.</li>
+        </ol>
+
+        <h3>Writing good Project Instructions</h3>
+        <p>Project Instructions are the most powerful and underused feature. They tell Claude who you are, what you're working on, and how you want things done.</p>
+
+        <div class="prompt-example"><div class="label good">Finance team example</div>You are helping the Finance team at Inizio with recurring reporting and analysis.
+
+Key context:
+- Fiscal year: January to December
+- Reporting currency: GBP
+- Three business units: Consulting, Clinical, and Digital
+- Board meets quarterly; leadership team meets monthly
+- ERP: NetSuite
+
+When writing commentary or reports:
+- Professional, concise language. No filler.
+- Always include variance vs budget and vs prior year
+- Flag items more than 10% off budget
+- Use the format from the template files unless told otherwise
+
+When working with data files:
+- Look for anomalies before I ask
+- If numbers don't add up or look unusual, flag them proactively
+- Don't round aggressively. Keep to nearest thousand in summaries.</div>
+
+        <div class="prompt-example"><div class="label good">Management / strategy example</div>You are supporting the Strategy and Transformation team at Inizio.
+
+Key context:
+- Healthcare services company, UK/Ireland/US operations
+- Strategic plan 2024-2027, three pillars: Growth, Efficiency, People
+- 12 transformation workstreams, each with a named lead
+- I report to the COO
+
+Preferences:
+- Structured output: headings, bullets, tables
+- Lead with "so what" before the detail
+- When reviewing proposals, be critical. Challenge what might be wrong.
+- Match the tone and format of the example documents uploaded to this Project</div>
+
+        <h3>Project ideas for your team</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>Board reporting</h4>
+                <p>Upload your board pack template, previous commentary, and standing data formats. Each month, start a new conversation and attach the latest data. Claude already knows the format.</p>
+            </div>
+            <div class="card">
+                <h4>Client engagement</h4>
+                <p>Upload the proposal, SOW, key correspondence, and deliverable templates. Use the Project for all work on that client. Claude builds understanding over time.</p>
+            </div>
+            <div class="card">
+                <h4>Budget cycle</h4>
+                <p>Upload the budget timetable, submission template, prior year actuals, and guidelines. Use for reviewing submissions, drafting challenges, and preparing consolidation commentary.</p>
+            </div>
+            <div class="card">
+                <h4>Personal productivity</h4>
+                <p>Create a Project for your own recurring tasks. Upload your writing examples, meeting note format, preferred email structure. Claude adapts to how you work.</p>
+            </div>
+        </div>
+
+        <h3>File uploads: what works well</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>Supported formats</h4>
+                <ul>
+                    <li>PDFs (reports, contracts, proposals)</li>
+                    <li>Word documents (.docx)</li>
+                    <li>Excel files (.xlsx) and CSVs</li>
+                    <li>PowerPoint decks (.pptx)</li>
+                    <li>Images (charts, diagrams, whiteboard photos)</li>
+                    <li>Plain text and markdown files</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Tips for better results</h4>
+                <ul>
+                    <li>Smaller, focused files beat 200-page documents</li>
+                    <li>Scanned PDFs (image-based) are harder to read</li>
+                    <li>For Excel, make sure data has clear column headers</li>
+                    <li>Tell Claude which sheet or section to focus on</li>
+                    <li>Name files clearly so you can reference them</li>
+                    <li>If a file is very large, consider splitting it</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip info">
+            <strong>How much can Claude read?</strong>
+            Claude has a large context window and can handle substantial documents. But quality is better when you point it at the specific section you need rather than asking it to process 100 pages at once. "Look at page 14-18" will get you a better answer than "summarise the whole thing".
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EXCEL & POWERPOINT -->
+    <section id="excel-pptx">
+        <h2>Excel & PowerPoint</h2>
+        <p class="section-intro">Claude has plugins for Excel and PowerPoint that let you use AI directly inside those applications.</p>
+
+        <h3>Claude for Excel</h3>
+        <p>The Excel plugin lets you work with Claude from within your spreadsheet. It's useful for formula help, data cleaning, analysis, and categorisation.</p>
+
+        <h3>Getting set up</h3>
+        <ol class="steps">
+            <li>Open Excel and go to <strong>Insert &gt; Get Add-ins</strong>.</li>
+            <li>Search for <strong>"Claude for Excel"</strong> and install it.</li>
+            <li>Sign in with your Claude account when prompted.</li>
+            <li>Claude appears as a sidebar panel. Select data ranges and ask questions about them.</li>
+        </ol>
+
+        <h3>Excel: formula help</h3>
+
+        <div class="prompt-example"><div class="label good">Write a formula</div>I have dates in A2:A500 and revenue in B2:B500.
+Write a formula that calculates the average monthly revenue for the last 12 months only.
+Explain how it works so I can adapt it later.</div>
+
+        <div class="prompt-example"><div class="label good">Debug a formula</div>This VLOOKUP is returning #N/A for about 30% of the rows but I can see the values exist in the lookup table. What could be causing this? Here's the formula: =VLOOKUP(A2, Sheet2!A:C, 3, FALSE)</div>
+
+        <div class="prompt-example"><div class="label good">Complex calculation</div>I need a formula that calculates the compound annual growth rate (CAGR) between the value in B2 (start) and B6 (end) over 4 years. Also create a version that works even if some intermediate years are missing.</div>
+
+        <h3>Excel: data cleaning</h3>
+
+        <div class="prompt-example"><div class="label good">Standardise names</div>Column C has company names in inconsistent formats: "ACME Ltd", "Acme Limited", "acme ltd.", "ACME LTD".
+Create a formula or process to standardise them all to proper case with "Ltd" at the end.</div>
+
+        <div class="prompt-example"><div class="label good">Parse messy addresses</div>Column A has full addresses as single strings like "42 High Street, Manchester, M1 4BT, UK".
+Split into separate columns for Street, City, Postcode, and Country.
+Handle edge cases where some fields might be missing.</div>
+
+        <div class="prompt-example"><div class="label good">Find duplicates</div>I suspect there are duplicate invoices in this data. Columns: Invoice Number, Supplier, Date, Amount.
+Help me find: exact duplicates (same invoice number), likely duplicates (same supplier + amount within 7 days), and any invoice numbers that don't match our format (INV-XXXXXX).</div>
+
+        <h3>Excel: analysis</h3>
+
+        <div class="prompt-example"><div class="label good">Expense analysis</div>I've selected A1:F200 which contains our Q3 expense claims.
+Columns: Employee, Department, Date, Category, Amount, Approved By.
+
+Summarise:
+- Total spend by department
+- Top 5 categories by value
+- Any individual claims over &pound;5,000
+- Average claim value by department
+- Which approver is signing off the most spend</div>
+
+        <div class="prompt-example"><div class="label good">Variance analysis</div>I have two sheets: "Budget" and "Actuals", both with the same row structure (cost centres) and column structure (months).
+
+Create a variance sheet that shows:
+- Absolute variance (Actuals minus Budget) for each cell
+- Percentage variance
+- Conditional formatting logic: red if more than 10% over budget, green if under
+- A summary row showing the total variance by month</div>
+
+        <div class="prompt-example"><div class="label good">Categorisation</div>Column D has free-text descriptions of bank transactions.
+Categorise each into: Payroll, Rent, Professional Fees, Software, Travel, Marketing, Utilities, or Other.
+Put the category in column E. Where you're not confident, put "Review" and highlight the row.</div>
+
+        <h3>Claude for PowerPoint</h3>
+        <p>The PowerPoint plugin helps you build content, write speaker notes, and restructure decks.</p>
+
+        <h3>Getting set up</h3>
+        <ol class="steps">
+            <li>Open PowerPoint and go to <strong>Insert &gt; Get Add-ins</strong>.</li>
+            <li>Search for <strong>"Claude for PowerPoint"</strong> and install it.</li>
+            <li>Sign in with your Claude account.</li>
+            <li>Claude appears as a sidebar. Work with your current deck or generate new content.</li>
+        </ol>
+
+        <h3>PowerPoint: building a deck</h3>
+
+        <div class="prompt-example"><div class="label good">From a document</div>I have a 15-page strategy document. Turn it into a 10-slide executive summary:
+
+- Slide 1: Title
+- Slide 2: Executive summary (key message in 3 bullets)
+- Slides 3-5: One slide per strategic pillar with objectives and KPIs
+- Slides 6-8: Key initiatives with timelines
+- Slide 9: Investment required and expected returns
+- Slide 10: Next steps and decisions needed
+
+Keep text minimal. No full sentences on slides. "Headline + 3-4 bullets" format.</div>
+
+        <div class="prompt-example"><div class="label good">From meeting notes</div>I just came out of a 2-hour strategy session. Here are my rough notes [paste].
+
+Build a 6-slide summary deck:
+- What we agreed on
+- What we disagreed on
+- Open questions needing resolution
+- Next steps with owners
+- Timeline
+
+This is for the people who weren't in the room, so make it self-explanatory.</div>
+
+        <h3>PowerPoint: improving existing decks</h3>
+
+        <div class="prompt-example"><div class="label good">Cut text down</div>This slide has too much text. Rewrite so it follows the 6x6 rule: no more than 6 bullets, no more than 6 words per bullet. Keep the core message.
+
+Current slide text: [paste]</div>
+
+        <div class="prompt-example"><div class="label good">Fix the story arc</div>Here are my slide titles in order:
+1. Q3 Results Overview
+2. Revenue by Region
+3. Market Context
+4. Our Strategy
+5. Cost Breakdown
+6. Headcount Changes
+7. Risks
+8. Next Steps
+
+The narrative feels disjointed. Suggest a better ordering and any slides to add or remove to make the story flow from "what happened" to "why" to "what we're doing about it".</div>
+
+        <div class="prompt-example"><div class="label good">Speaker notes</div>For each of these 12 slides, write speaker notes that:
+- Explain the key point in 2-3 sentences
+- Include a transition to the next slide
+- Note likely audience questions
+
+Audience: senior leadership. They want implications, not just data.
+
+[Paste slide content]</div>
+
+        <div class="prompt-example"><div class="label good">Executive summary slide</div>I have a 20-slide deck. Write a single executive summary slide that captures the entire presentation in 4-5 bullets. Each bullet should be a complete thought that stands on its own. This slide needs to work for people who will only read one slide.
+
+[Paste or describe deck content]</div>
+
+        <div class="tip">
+            <strong>Plugins vs chat</strong>
+            The plugins are best for quick, in-context tasks: formula help, text editing, speaker notes. For larger work like building a full deck or deep multi-sheet analysis, you'll often get better results in the browser where you can have a longer conversation and iterate.
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONNECTORS -->
+    <section id="connectors">
+        <h2>Connectors & Tools</h2>
+        <p class="section-intro">Connectors let Claude access external tools like Box, SharePoint, and Google Drive directly in conversation.</p>
+
+        <div class="holding-notice">
+            <div class="icon">&#128274;</div>
+            <h4>Coming soon</h4>
+            <p>Connectors are going through our internal approval process. We're evaluating which services to enable and under what conditions.</p>
+            <p style="margin-top: 12px;">In the meantime, you can upload files directly to conversations and Projects.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- COWORK -->
+    <section id="cowork">
+        <h2>Cowork</h2>
+        <p class="section-intro">Cowork is Claude's desktop application. It can work with your local files, browser, and apps directly on your computer.</p>
+
+        <div class="holding-notice">
+            <div class="icon">&#128274;</div>
+            <h4>Coming soon</h4>
+            <p>Cowork is being evaluated as part of our broader rollout. We're working through governance and security review before enabling it.</p>
+            <p style="margin-top: 12px;">If you're interested in early Cowork evaluation, mention it in your feedback.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- GUIDELINES -->
+    <section id="guidelines">
+        <h2>Guidelines</h2>
+        <p class="section-intro">What's appropriate to use Claude for, and what isn't. These apply for the duration of the pilot.</p>
+
+        <div class="do-dont">
+            <div class="do-col">
+                <h4>Appropriate use</h4>
+                <ul>
+                    <li>Drafting internal documents, emails, and reports</li>
+                    <li>Analysing uploaded data and documents</li>
+                    <li>Summarising long documents or meeting notes</li>
+                    <li>Reviewing and challenging business cases</li>
+                    <li>Creating presentation content and speaker notes</li>
+                    <li>Formula help and data work in Excel</li>
+                    <li>Brainstorming and structuring ideas</li>
+                    <li>Process documentation</li>
+                    <li>Research and competitive analysis</li>
+                    <li>Meeting preparation</li>
+                </ul>
+            </div>
+            <div class="dont-col">
+                <h4>Not appropriate</h4>
+                <ul>
+                    <li>Entering passwords, credentials, or API keys</li>
+                    <li>Sharing personal data (employees, clients, patients)</li>
+                    <li>Using output in regulated submissions without review</li>
+                    <li>Connecting to finance systems of record</li>
+                    <li>Letting Claude make decisions on your behalf</li>
+                    <li>Sending output to clients without reviewing it</li>
+                    <li>Uploading contracts with confidentiality restrictions</li>
+                    <li>Assuming numerical calculations are always correct</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Data handling</h3>
+        <p>Claude Enterprise is configured so your conversations are not used to train models. That said, apply common sense about what you share.</p>
+
+        <div class="tip">
+            <strong>Rule of thumb</strong>
+            If you wouldn't paste it into an email to a trusted external consultant, think twice before putting it into Claude.
+        </div>
+
+        <h3>Accuracy and hallucination</h3>
+        <p>Claude can generate confident-sounding content that is factually wrong. This happens with all large language models, including ChatGPT. It's most likely when Claude generates facts from its own knowledge rather than working from a document you've provided.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>Lower risk of errors</h4>
+                <p>Summarising, restructuring, and analysing documents you've uploaded. Claude is working from source material you can verify.</p>
+            </div>
+            <div class="card">
+                <h4>Higher risk of errors</h4>
+                <p>Generating specific statistics, regulatory references, case law, named sources, or historical data from memory. Always verify independently.</p>
+            </div>
+        </div>
+
+        <div class="tip info">
+            <strong>Practical safeguard</strong>
+            When Claude gives you a specific fact or number you haven't provided, ask: "Are you confident in that figure? What's your source?" You can also add to your prompt: "If you're not sure about something, say so rather than guessing."
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FEEDBACK -->
+    <section id="feedback">
+        <h2>Feedback</h2>
+        <p class="section-intro">Your feedback shapes how we roll AI tools out more broadly. Findings from this pilot inform policy across all platforms, including ChatGPT and Gemini.</p>
+
+        <h3>What we're looking for</h3>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>What worked well</h4>
+                <p>Tasks where Claude saved real time or produced something better than expected. What did you ask? How long would it have taken without Claude?</p>
+            </div>
+            <div class="card">
+                <h4>What didn't work</h4>
+                <p>Tasks where Claude got it wrong, missed the point, or wasn't worth the effort. What went wrong? Was the output useless or just needed heavy editing?</p>
+            </div>
+            <div class="card">
+                <h4>Surprises</h4>
+                <p>Anything unexpected. Did Claude handle something unusually well? Did it make an error that could have caused a problem if uncaught?</p>
+            </div>
+            <div class="card">
+                <h4>Gaps</h4>
+                <p>Things you wanted to do but couldn't. Access you needed. Features that would have made a difference. Tasks that are close to useful but not quite there.</p>
+            </div>
+        </div>
+
+        <h3>How to give feedback</h3>
+        <p>Use the <strong>thumbs up / thumbs down</strong> buttons on any Claude response. Thumbs down is especially valuable because it helps us understand where Claude falls short on real tasks.</p>
+
+        <div class="tip">
+            <strong>Note</strong>
+            We'll share a simple way to collect broader observations beyond individual responses. Look out for a follow-up from the programme team.
+        </div>
+    </section>
+
+    </div><!-- end container -->
+</main>
+
+<footer>
+    <div class="container">
+        Claude Learning Hub &middot; Pilot Program &middot; Internal use only
+    </div>
+</footer>
+
+<script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    function highlightNav() {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    }
+    window.addEventListener('scroll', highlightNav);
+    highlightNav();
+</script>
+
 </body>
 </html>
