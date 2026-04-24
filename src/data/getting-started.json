@@ -18,7 +18,7 @@
     },
     {
       "title": "Model selector",
-      "body": "Choose which model to use. Sonnet is fast and good for most tasks. Opus is slower but stronger on complex reasoning."
+      "body": "Choose which Claude model to use at the top of each new conversation. The right choice depends on the task — more on this below."
     },
     {
       "title": "File attachments",
@@ -45,5 +45,42 @@
       "title": "Quick productivity win",
       "body": "I have a meeting in 30 minutes with the Head of Procurement about consolidating our software vendors. Here are my rough notes [paste them].\n\nTurn these into:\n1. A clear agenda with time allocations\n2. The 3 key decisions we need to make\n3. A list of questions I should ask to understand their constraints"
     }
-  ]
+  ],
+  "models_heading": "Choosing the right model",
+  "models_intro": "The model selector appears at the top of each new conversation. Picking the right one affects the speed, depth, and quality of the response. For most tasks, the default is fine. But knowing when to switch makes a difference.",
+  "models_cards": [
+    {
+      "title": "Sonnet — default",
+      "body": "Fast, capable, and the right choice for 90% of tasks: drafting, summarising, analysing documents, coding help, and general Q&A. Start here unless you have a reason not to."
+    },
+    {
+      "title": "Opus — for complex work",
+      "body": "Slower and more thorough. Use it when depth matters more than speed: strategic analysis, evaluating competing arguments, complex financial modelling, or any task where nuance and reasoning quality are critical."
+    },
+    {
+      "title": "Haiku — for speed",
+      "body": "The fastest and lightest model. Good for simple, repetitive, or time-sensitive tasks where you need a quick answer and the task doesn't require deep reasoning."
+    }
+  ],
+  "thinking_heading": "The Thinking toggle",
+  "thinking_body": "When using Opus, you may see an option to enable extended thinking. When switched on, Claude works through the problem step by step before giving you its answer — similar to showing its working. This makes a meaningful difference on tasks that involve weighing up multiple options, identifying logical gaps, or producing outputs that need to be well-reasoned and defensible.",
+  "thinking_tip": {
+    "label": "When to use it",
+    "body": "Turn thinking on for complex analysis, strategic trade-offs, evaluating business cases, or any task where you want to understand Claude's reasoning — not just the conclusion. Turn it off for speed-sensitive tasks like drafting a quick email or summarising a document. The tradeoff is time: thinking mode takes noticeably longer."
+  },
+  "preferences_heading": "Setting your preferences",
+  "preferences_why": "By default, Claude behaves like a polished but generic assistant. It over-explains, hedges, uses filler phrases, and writes in a style optimised for everyone — which often means it doesn't quite work for anyone. Preferences let you permanently reshape how Claude communicates with you. Set them once and every future conversation benefits automatically. For a busy professional, this is one of the highest-value things you can do in the first five minutes.",
+  "preferences_steps": [
+    "Click your profile icon at the bottom left of the sidebar on claude.ai.",
+    "Go to <strong>Settings</strong>.",
+    "Find the <strong>Profile</strong> section and look for how Claude responds or user preferences.",
+    "Write your instructions in plain English. No special formatting needed.",
+    "Save. These apply to all your future conversations automatically."
+  ],
+  "preferences_example_title": "Example preferences",
+  "preferences_example_body": "Do not use em-dashes.\nDo not over elaborate.\nKeep the language natural. Avoid sales or sensational language.\nDon't use filler affirmations like 'good question' or 'great point'. Just give me the answer.",
+  "preferences_tip": {
+    "label": "Where to start",
+    "body": "Begin with 3-4 clear instructions and add more as you notice patterns in Claude's default behaviour that don't suit you. Think about: tone (formal or conversational), length (brief or detailed), structure (bullets or prose), and specific habits to avoid. The more specific you are, the more consistent the results."
+  }
 }

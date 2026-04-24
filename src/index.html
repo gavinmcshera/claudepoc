@@ -15,7 +15,6 @@
             --coral-dark: #005559;
             --white: #FFFFFF;
             --off-white: #E2E2F2;
-            --light-grey: #E2E2F2;
             --mid-grey: #616172;
             --border: #E2E2F2;
             --text: #414156;
@@ -35,9 +34,9 @@
             background: var(--white);
             line-height: 1.7;
             font-size: 16px;
-            font-weight: 400;
         }
 
+        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -46,7 +45,8 @@
             z-index: 100;
             display: flex;
             align-items: center;
-            padding: 0 32px;
+            padding: 0 24px 0 32px;
+            gap: 0;
         }
 
         .nav-logo {
@@ -55,24 +55,24 @@
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
-            margin-right: 48px;
+            margin-right: 32px;
             white-space: nowrap;
-            letter-spacing: 0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 4px;
+            gap: 2px;
             list-style: none;
             overflow-x: auto;
+            flex: 1;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13.5px;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
             font-weight: 500;
-            padding: 6px 14px;
+            padding: 6px 11px;
             border-radius: 6px;
             transition: all 0.2s;
             white-space: nowrap;
@@ -80,16 +80,58 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--coral);
-            background: rgba(0, 202, 159, 0.12);
+            background: rgba(0,202,159,0.12);
         }
 
+        /* ── NAV SEARCH ── */
+        .nav-search {
+            margin-left: 16px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .nav-search svg {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: rgba(255,255,255,0.5);
+            stroke-width: 2;
+            pointer-events: none;
+        }
+
+        .nav-search input {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 7px 14px 7px 30px;
+            color: white;
+            font-family: calibri, sans-serif;
+            font-size: 13px;
+            width: 170px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .nav-search input::placeholder { color: rgba(255,255,255,0.45); }
+
+        .nav-search input:focus {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--coral);
+            width: 220px;
+        }
+
+        /* ── MOBILE TOGGLE ── */
         .nav-toggle {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
             padding: 8px;
-            margin-left: auto;
+            margin-left: 8px;
         }
 
         .nav-toggle span {
@@ -98,9 +140,30 @@
             height: 2px;
             background: var(--white);
             margin: 5px 0;
-            transition: 0.3s;
         }
 
+        /* ── PROGRESS BAR ── */
+        #progress-bar {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--coral);
+            z-index: 99;
+            transition: width 0.08s linear;
+        }
+
+        /* ── SEARCH NO RESULTS ── */
+        #no-results {
+            display: none;
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--mid-grey);
+            font-size: 16px;
+        }
+
+        /* ── LAYOUT ── */
         .container {
             max-width: 780px;
             margin: 0 auto;
@@ -108,10 +171,11 @@
         }
 
         main {
-            padding-top: var(--nav-height);
+            padding-top: calc(var(--nav-height) + 3px);
             padding-bottom: 80px;
         }
 
+        /* ── HERO ── */
         .hero {
             background: linear-gradient(135deg, #451284 0%, #2a034c 100%);
             padding: 80px 24px 64px;
@@ -119,10 +183,7 @@
             color: var(--white);
         }
 
-        .hero .container-inner {
-            max-width: 780px;
-            margin: 0 auto;
-        }
+        .hero .container-inner { max-width: 780px; margin: 0 auto; }
 
         .hero h1 {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -135,7 +196,7 @@
 
         .hero p {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255,255,255,0.75);
             max-width: 600px;
             font-weight: 300;
         }
@@ -153,6 +214,7 @@
             text-transform: uppercase;
         }
 
+        /* ── SECTIONS ── */
         section { margin-bottom: 56px; }
 
         section h2 {
@@ -179,9 +241,9 @@
         }
 
         section h3:first-of-type { margin-top: 24px; }
-
         section p { margin-bottom: 14px; }
 
+        /* ── CARDS ── */
         .card-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -212,10 +274,7 @@
 
         .card ul { list-style: none; padding: 0; }
 
-        .card ul li {
-            padding: 3px 0 3px 16px;
-            position: relative;
-        }
+        .card ul li { padding: 3px 0 3px 16px; position: relative; }
 
         .card ul li::before {
             content: "\2022";
@@ -226,11 +285,13 @@
 
         .card.full-width { grid-column: 1 / -1; }
 
+        /* ── PROMPT EXAMPLES ── */
         .prompt-example {
+            position: relative;
             background: var(--navy);
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255,255,255,0.9);
             border-radius: 8px;
-            padding: 22px;
+            padding: 22px 80px 22px 22px;
             margin: 14px 0;
             font-size: 14px;
             line-height: 1.7;
@@ -240,18 +301,47 @@
         }
 
         .prompt-example .label {
+            display: block;
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
             margin-bottom: 10px;
-            display: block;
         }
 
         .prompt-example .label.bad { color: #F87171; }
         .prompt-example .label.good { color: #6EE7B7; }
         .prompt-example .label.neutral { color: #FCD34D; }
 
+        /* ── COPY BUTTON ── */
+        .copy-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.65);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: calibri, sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.18);
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background: rgba(0,202,159,0.2);
+            border-color: var(--coral);
+            color: var(--coral);
+        }
+
+        /* ── TIPS ── */
         .tip {
             background: var(--coral-light);
             border-left: 3px solid var(--coral);
@@ -271,13 +361,10 @@
             font-weight: 600;
         }
 
-        .tip.info {
-            background: var(--off-white);
-            border-left-color: var(--navy-light);
-        }
-
+        .tip.info { background: var(--off-white); border-left-color: var(--navy-light); }
         .tip.info strong { color: var(--navy-light); }
 
+        /* ── HOLDING NOTICE ── */
         .holding-notice {
             background: var(--off-white);
             border: 1px dashed var(--border);
@@ -291,6 +378,7 @@
         .holding-notice h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
         .holding-notice p { color: var(--mid-grey); font-size: 14px; margin-bottom: 0; margin-top: 8px; }
 
+        /* ── DO / DON'T ── */
         .do-dont {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -327,11 +415,8 @@
         .do-col li::before { content: "\2713"; color: var(--coral); position: absolute; left: 0; font-weight: 700; }
         .dont-col li::before { content: "\2717"; color: #b502b1; position: absolute; left: 0; font-weight: 700; }
 
-        .steps {
-            counter-reset: step;
-            list-style: none;
-            margin: 20px 0;
-        }
+        /* ── STEPS ── */
+        .steps { counter-reset: step; list-style: none; margin: 20px 0; }
 
         .steps li {
             counter-increment: step;
@@ -355,6 +440,7 @@
             font-size: 13px; font-weight: 600;
         }
 
+        /* ── COMPARE TABLE ── */
         .compare-table {
             width: 100%;
             border-collapse: collapse;
@@ -382,29 +468,28 @@
 
         .compare-table tr:last-child td { border-bottom: none; }
 
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 56px 0;
-        }
+        /* ── DIVIDER ── */
+        .divider { height: 1px; background: var(--border); margin: 56px 0; }
 
+        /* ── FOOTER ── */
         footer {
             background: var(--navy);
             padding: 32px 0;
             text-align: center;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255,255,255,0.5);
         }
 
         #loading {
             text-align: center;
             padding: 80px 24px;
             color: var(--mid-grey);
-            font-size: 16px;
         }
 
-        @media (max-width: 700px) {
+        /* ── MOBILE ── */
+        @media (max-width: 780px) {
             .nav-links { display: none; }
+            .nav-search { display: none; }
             .nav-links.open {
                 display: flex;
                 flex-direction: column;
@@ -419,10 +504,14 @@
             .nav-toggle { display: block; }
             .hero h1 { font-size: 30px; }
             .card-grid, .do-dont { grid-template-columns: 1fr; }
+            .prompt-example { padding-right: 22px; }
+            .copy-btn { display: none; }
         }
     </style>
 </head>
 <body>
+
+<div id="progress-bar"></div>
 
 <nav>
     <a href="#top" class="nav-logo">Claude Learning Hub</a>
@@ -436,6 +525,13 @@
         <li><a href="#guidelines">Guidelines</a></li>
         <li><a href="#feedback">Feedback</a></li>
     </ul>
+    <div class="nav-search">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="22" y2="22"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search..." autocomplete="off" />
+    </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
@@ -445,30 +541,35 @@
     <div class="container">
         <div id="loading">Loading...</div>
         <div id="app" style="display:none"></div>
+        <div id="no-results">No results found for "<span id="search-term"></span>"</div>
     </div>
 </main>
 
 <footer>
-    <div class="container">
+    <div class="container" id="footer-text">
         Claude Learning Hub &middot; Pilot Program &middot; Internal use only
     </div>
 </footer>
 
 <script>
-// ── Render helpers ───────────────────────────────────────────────
+// ── Escape helpers ───────────────────────────────────────────────
 
 function esc(str) {
     if (!str) return '';
     return String(str)
-        .replace(/&(?!amp;|lt;|gt;|quot;|#)/g, '&amp;')
+        .replace(/&(?!(amp|lt|gt|quot|#);)/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
 }
 
-function safe(str) {
-    // Use for fields that may contain intentional HTML (like <strong> in steps)
-    return str || '';
+function escAttr(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
+
+function safe(str) { return str || ''; }
+
+// ── Render helpers ───────────────────────────────────────────────
 
 function renderSteps(steps) {
     if (!steps || !steps.length) return '';
@@ -482,10 +583,8 @@ function renderCards(cards) {
             <h4>${esc(c.title)}</h4>
             ${c.items
                 ? `<ul>${c.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`
-                : `<p>${safe(c.body)}</p>`
-            }
-        </div>
-    `).join('')}</div>`;
+                : `<p>${safe(c.body)}</p>`}
+        </div>`).join('')}</div>`;
 }
 
 function renderTip(tip, type) {
@@ -493,13 +592,15 @@ function renderTip(tip, type) {
     return `<div class="tip ${type || ''}"><strong>${esc(tip.label)}</strong>${esc(tip.body)}</div>`;
 }
 
-function renderTipObj(label, body, type) {
+function renderTipRaw(label, body, type) {
     if (!label) return '';
     return `<div class="tip ${type || ''}"><strong>${esc(label)}</strong>${esc(body)}</div>`;
 }
 
 function renderPrompt(p) {
-    return `<div class="prompt-example"><span class="label ${esc(p.type)}">${esc(p.title)}</span>${esc(p.body)}</div>`;
+    return `<div class="prompt-example" data-body="${escAttr(p.body)}">
+        <span class="label ${esc(p.type)}">${esc(p.title)}</span>
+        <button class="copy-btn" type="button">Copy</button>${esc(p.body)}</div>`;
 }
 
 function renderPrompts(prompts) {
@@ -508,67 +609,79 @@ function renderPrompts(prompts) {
 }
 
 function renderHoldingNotice(heading, p1, p2) {
-    return `
-        <div class="holding-notice">
-            <div class="icon">&#128274;</div>
-            <h4>${esc(heading)}</h4>
-            <p>${esc(p1)}</p>
-            ${p2 ? `<p>${esc(p2)}</p>` : ''}
-        </div>`;
+    return `<div class="holding-notice">
+        <div class="icon">&#128274;</div>
+        <h4>${esc(heading)}</h4>
+        <p>${esc(p1)}</p>
+        ${p2 ? `<p>${esc(p2)}</p>` : ''}
+    </div>`;
 }
 
-function renderDivider() {
-    return '<div class="divider"></div>';
-}
+function renderDivider() { return '<div class="divider"></div>'; }
 
 // ── Section renderers ────────────────────────────────────────────
 
 function renderHero(d) {
-    return `
-        <div class="hero">
-            <div class="container-inner">
-                <div class="badge">${esc(d.badge)}</div>
-                <h1>${esc(d.heading)}</h1>
-                <p>${esc(d.subheading)}</p>
-            </div>
-        </div>`;
+    return `<div class="hero">
+        <div class="container-inner">
+            <div class="badge">${esc(d.badge)}</div>
+            <h1>${esc(d.heading)}</h1>
+            <p>${esc(d.subheading)}</p>
+        </div>
+    </div>`;
 }
 
 function renderGettingStarted(d) {
-    return `
-        <section id="getting-started">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            ${renderSteps(d.steps)}
-            <h3>The interface at a glance</h3>
-            ${renderCards(d.cards)}
-            ${renderTip(d.tip)}
-            <h3>Your first conversation</h3>
-            <p>Start with something real from your day-to-day work. Don't test Claude with trivia. It's most useful when given a genuine task with real context.</p>
-            ${renderPrompts(d.prompts)}
-        </section>`;
+    const modelsCards = d.models_cards ? renderCards(d.models_cards) : '';
+    const thinkingTip = d.thinking_tip ? renderTip(d.thinking_tip) : '';
+    const prefExample = d.preferences_example_body ? `
+        <div class="prompt-example" data-body="${escAttr(d.preferences_example_body)}">
+            <span class="label good">${esc(d.preferences_example_title || 'Example')}</span>
+            <button class="copy-btn" type="button">Copy</button>${esc(d.preferences_example_body)}</div>` : '';
+    const prefTip = d.preferences_tip ? renderTip(d.preferences_tip) : '';
+
+    return `<section id="getting-started">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        ${renderSteps(d.steps)}
+        <h3>The interface at a glance</h3>
+        ${renderCards(d.cards)}
+        ${renderTip(d.tip)}
+        <h3>Your first conversation</h3>
+        <p>Start with something real from your day-to-day work. It's most useful when given a genuine task with real context.</p>
+        ${renderPrompts(d.prompts)}
+        ${d.models_heading ? `<h3>${esc(d.models_heading)}</h3>` : ''}
+        ${d.models_intro ? `<p>${esc(d.models_intro)}</p>` : ''}
+        ${modelsCards}
+        ${d.thinking_heading ? `<h3>${esc(d.thinking_heading)}</h3>` : ''}
+        ${d.thinking_body ? `<p>${esc(d.thinking_body)}</p>` : ''}
+        ${thinkingTip}
+        ${d.preferences_heading ? `<h3>${esc(d.preferences_heading)}</h3>` : ''}
+        ${d.preferences_why ? `<p>${esc(d.preferences_why)}</p>` : ''}
+        ${renderSteps(d.preferences_steps)}
+        ${prefExample}
+        ${prefTip}
+    </section>`;
 }
 
 function renderPrompting(d) {
     const patterns = (d.patterns || []).map(p => `
         <h3>${esc(p.heading)}</h3>
         <p>${esc(p.body)}</p>
-        ${p.tip_label ? renderTipObj(p.tip_label, p.tip_body) : ''}
-        ${renderPrompts(p.examples)}
-    `).join('');
+        ${p.tip_label ? renderTipRaw(p.tip_label, p.tip_body) : ''}
+        ${renderPrompts(p.examples)}`).join('');
 
-    const cards = (d.prompt_cards || []).map(c => `
-        <div class="card"><h4>${esc(c.title)}</h4><p>${esc(c.body)}</p></div>
-    `).join('');
+    const cards = (d.prompt_cards || []).map(c =>
+        `<div class="card"><h4>${esc(c.title)}</h4><p>${esc(c.body)}</p></div>`
+    ).join('');
 
-    return `
-        <section id="prompting">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            ${patterns}
-            <h3>${esc(d.prompt_cards_heading)}</h3>
-            <div class="card-grid">${cards}</div>
-        </section>`;
+    return `<section id="prompting">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        ${patterns}
+        <h3>${esc(d.prompt_cards_heading)}</h3>
+        <div class="card-grid">${cards}</div>
+    </section>`;
 }
 
 function renderProjects(d) {
@@ -576,118 +689,115 @@ function renderProjects(d) {
         `<tr><td>${esc(r.regular)}</td><td>${esc(r.project)}</td></tr>`
     ).join('');
 
-    const instructionExamples = (d.instruction_examples || []).map(e =>
-        `<div class="prompt-example"><span class="label good">${esc(e.title)}</span>${esc(e.body)}</div>`
+    const examples = (d.instruction_examples || []).map(e =>
+        `<div class="prompt-example" data-body="${escAttr(e.body)}">
+            <span class="label good">${esc(e.title)}</span>
+            <button class="copy-btn" type="button">Copy</button>${esc(e.body)}</div>`
     ).join('');
 
-    return `
-        <section id="projects">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            <h3>What is a Project?</h3>
-            <p>${esc(d.what_is_it)}</p>
-            <h3>When to use a Project vs a regular chat</h3>
-            <table class="compare-table">
-                <thead><tr><th>Use a regular chat when...</th><th>Use a Project when...</th></tr></thead>
-                <tbody>${tableRows}</tbody>
-            </table>
-            <h3>Setting up a Project</h3>
-            ${renderSteps(d.steps)}
-            <h3>Writing good Project Instructions</h3>
-            <p>Project Instructions are the most powerful and underused feature. Write them once, benefit every time.</p>
-            ${instructionExamples}
-            <h3>Project ideas</h3>
-            ${renderCards(d.idea_cards)}
-            <h3>File uploads</h3>
-            ${renderCards(d.file_cards)}
-        </section>`;
+    return `<section id="projects">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        <h3>What is a Project?</h3>
+        <p>${esc(d.what_is_it)}</p>
+        <h3>When to use a Project vs a regular chat</h3>
+        <table class="compare-table">
+            <thead><tr><th>Use a regular chat when...</th><th>Use a Project when...</th></tr></thead>
+            <tbody>${tableRows}</tbody>
+        </table>
+        <h3>Setting up a Project</h3>
+        ${renderSteps(d.steps)}
+        <h3>Writing good Project Instructions</h3>
+        <p>Project Instructions are the most powerful and underused feature. Write them once, benefit every time.</p>
+        ${examples}
+        <h3>Project ideas</h3>
+        ${renderCards(d.idea_cards)}
+        <h3>File uploads</h3>
+        ${renderCards(d.file_cards)}
+    </section>`;
 }
 
 function renderExcelPptx(d) {
-    const excelExamples = (d.excel_examples || []).map(group => `
-        <h3>${esc(group.subheading)}</h3>
-        ${renderPrompts(group.prompts)}
-    `).join('');
+    const excelEx = (d.excel_examples || []).map(g =>
+        `<h3>${esc(g.subheading)}</h3>${renderPrompts(g.prompts)}`
+    ).join('');
 
-    const pptxExamples = (d.pptx_examples || []).map(group => `
-        <h3>${esc(group.subheading)}</h3>
-        ${renderPrompts(group.prompts)}
-    `).join('');
+    const pptxEx = (d.pptx_examples || []).map(g =>
+        `<h3>${esc(g.subheading)}</h3>${renderPrompts(g.prompts)}`
+    ).join('');
 
-    return `
-        <section id="excel-pptx">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            <h3>Claude for Excel</h3>
-            ${renderSteps(d.excel_steps)}
-            ${excelExamples}
-            <h3>Claude for PowerPoint</h3>
-            ${renderSteps(d.pptx_steps)}
-            ${pptxExamples}
-            ${renderTip(d.tip)}
-        </section>`;
+    return `<section id="excel-pptx">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        <h3>Claude for Excel</h3>
+        ${renderSteps(d.excel_steps)}
+        ${excelEx}
+        <h3>Claude for PowerPoint</h3>
+        ${renderSteps(d.pptx_steps)}
+        ${pptxEx}
+        ${renderTip(d.tip)}
+    </section>`;
 }
 
 function renderConnectors(d) {
-    return `
-        <section id="connectors">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            ${renderHoldingNotice(d.notice_heading, d.notice_p1, d.notice_p2)}
-        </section>`;
+    return `<section id="connectors">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        ${renderHoldingNotice(d.notice_heading, d.notice_p1, d.notice_p2)}
+    </section>`;
 }
 
 function renderCowork(d) {
-    return `
-        <section id="cowork">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            ${renderHoldingNotice(d.notice_heading, d.notice_p1, d.notice_p2)}
-        </section>`;
+    return `<section id="cowork">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        ${renderHoldingNotice(d.notice_heading, d.notice_p1, d.notice_p2)}
+    </section>`;
 }
 
 function renderGuidelines(d) {
     const doItems = (d.do_items || []).map(i => `<li>${esc(i)}</li>`).join('');
     const dontItems = (d.dont_items || []).map(i => `<li>${esc(i)}</li>`).join('');
-    const tips = (d.tips || []).map(t => renderTipObj(t.label, t.body, t.type)).join('');
+    const tips = (d.tips || []).map(t => renderTipRaw(t.label, t.body, t.type)).join('');
 
-    return `
-        <section id="guidelines">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            <div class="do-dont">
-                <div class="do-col"><h4>Appropriate use</h4><ul>${doItems}</ul></div>
-                <div class="dont-col"><h4>Not appropriate</h4><ul>${dontItems}</ul></div>
-            </div>
-            <h3>Accuracy and hallucination</h3>
-            <p>${esc(d.hallucination_intro)}</p>
-            ${renderCards(d.risk_cards)}
-            ${tips}
-        </section>`;
+    return `<section id="guidelines">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        <div class="do-dont">
+            <div class="do-col"><h4>Appropriate use</h4><ul>${doItems}</ul></div>
+            <div class="dont-col"><h4>Not appropriate</h4><ul>${dontItems}</ul></div>
+        </div>
+        <h3>Accuracy and hallucination</h3>
+        <p>${esc(d.hallucination_intro)}</p>
+        ${renderCards(d.risk_cards)}
+        ${tips}
+    </section>`;
 }
 
 function renderFeedback(d) {
-    return `
-        <section id="feedback">
-            <h2>${esc(d.heading)}</h2>
-            <p class="section-intro">${esc(d.intro)}</p>
-            ${renderCards(d.cards)}
-            <p>${esc(d.body)}</p>
-            ${renderTipObj('Note', d.note)}
-        </section>`;
+    return `<section id="feedback">
+        <h2>${esc(d.heading)}</h2>
+        <p class="section-intro">${esc(d.intro)}</p>
+        ${renderCards(d.cards)}
+        <p>${esc(d.body)}</p>
+        ${renderTipRaw('Note', d.note)}
+    </section>`;
 }
 
 // ── Load and render ──────────────────────────────────────────────
 
 async function loadAll() {
     const files = [
-        'hero', 'getting-started', 'prompting', 'projects',
-        'excel-pptx', 'connectors', 'cowork', 'guidelines', 'feedback'
+        'hero','getting-started','prompting','projects',
+        'excel-pptx','connectors','cowork','guidelines','feedback'
     ];
 
     try {
         const results = await Promise.all(
-            files.map(f => fetch(`/data/${f}.json`).then(r => r.json()))
+            files.map(f => fetch(`/data/${f}.json`).then(r => {
+                if (!r.ok) throw new Error(`Failed to load ${f}.json`);
+                return r.json();
+            }))
         );
 
         const [hero, gs, prompting, projects, excel, connectors, cowork, guidelines, feedback] = results;
@@ -716,13 +826,22 @@ async function loadAll() {
         app.style.display = 'block';
         app.innerHTML = html;
 
+        if (hero.last_updated) {
+            document.getElementById('footer-text').innerHTML =
+                `Claude Learning Hub &middot; Pilot Program &middot; Internal use only &middot; Updated ${esc(hero.last_updated)}`;
+        }
+
         initNav();
+        initCopy();
+        initSearch();
 
     } catch (err) {
         document.getElementById('loading').textContent = 'Error loading content. Please refresh.';
         console.error(err);
     }
 }
+
+// ── Nav ──────────────────────────────────────────────────────────
 
 function initNav() {
     const toggle = document.getElementById('navToggle');
@@ -743,8 +862,88 @@ function initNav() {
             a.classList.toggle('active', a.getAttribute('href') === '#' + current);
         });
     }
-    window.addEventListener('scroll', highlightNav);
+    window.addEventListener('scroll', highlightNav, { passive: true });
     highlightNav();
+}
+
+// ── Progress bar ─────────────────────────────────────────────────
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+}, { passive: true });
+
+// ── Copy buttons ─────────────────────────────────────────────────
+
+function initCopy() {
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.copy-btn');
+        if (!btn) return;
+        const body = btn.closest('.prompt-example').dataset.body || '';
+        const copy = (text) => {
+            btn.textContent = 'Copied ✓';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        };
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(body).then(() => copy()).catch(() => fallbackCopy(body, copy));
+        } else {
+            fallbackCopy(body, copy);
+        }
+    });
+}
+
+function fallbackCopy(text, callback) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); callback(); } catch(e) {}
+    document.body.removeChild(ta);
+}
+
+// ── Search ───────────────────────────────────────────────────────
+
+function initSearch() {
+    const input = document.getElementById('searchInput');
+    const noResults = document.getElementById('no-results');
+    const term = document.getElementById('search-term');
+
+    input.addEventListener('input', function() {
+        const q = this.value.trim().toLowerCase();
+
+        if (!q) {
+            document.querySelectorAll('section, .divider').forEach(el => el.style.display = '');
+            noResults.style.display = 'none';
+            return;
+        }
+
+        term.textContent = this.value.trim();
+        let anyVisible = false;
+
+        document.querySelectorAll('section[id]').forEach(s => {
+            const matches = s.textContent.toLowerCase().includes(q);
+            s.style.display = matches ? '' : 'none';
+            if (matches) anyVisible = true;
+        });
+
+        // Show/hide dividers based on surrounding sections
+        document.querySelectorAll('.divider').forEach(d => {
+            const prev = d.previousElementSibling;
+            const next = d.nextElementSibling;
+            const prevHidden = prev && prev.style.display === 'none';
+            const nextHidden = next && (next.style.display === 'none' || next.id === 'no-results');
+            d.style.display = (prevHidden || nextHidden) ? 'none' : '';
+        });
+
+        noResults.style.display = anyVisible ? 'none' : 'block';
+    });
 }
 
 loadAll();

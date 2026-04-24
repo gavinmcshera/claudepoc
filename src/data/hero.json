@@ -1,5 +1,10 @@
 {
   "badge": "Pilot Program",
   "heading": "Claude Learning Hub",
+<<<<<<< Updated upstream
   "subheading": "A practical reference for the pilot group. Guides, prompt patterns, and working examples for management and finance teams getting started with Claude.  This wsite was made using Claude, Github and Azure Static websites. "
+=======
+  "subheading": "A practical reference for the pilot group. Guides, prompt patterns, and working examples for management and finance teams getting started with Claude.",
+  "last_updated": "April 2026"
+>>>>>>> Stashed changes
 }

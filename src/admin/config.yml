@@ -18,6 +18,7 @@ collections:
           - { label: "Badge text", name: "badge", widget: "string" }
           - { label: "Heading", name: "heading", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "text" }
+          - { label: "Last updated (shown in footer)", name: "last_updated", widget: "string" }
 
       - name: "getting_started"
         label: "Getting Started"
@@ -47,6 +48,36 @@ collections:
             fields:
               - { label: "Type", name: "type", widget: "select", options: ["good", "bad", "neutral"] }
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - { label: "Models section heading", name: "models_heading", widget: "string" }
+          - { label: "Models intro text", name: "models_intro", widget: "text" }
+          - label: "Model cards"
+            name: "models_cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - { label: "Thinking toggle heading", name: "thinking_heading", widget: "string" }
+          - { label: "Thinking toggle body", name: "thinking_body", widget: "text" }
+          - label: "Thinking tip"
+            name: "thinking_tip"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - { label: "Preferences section heading", name: "preferences_heading", widget: "string" }
+          - { label: "Preferences — why it matters", name: "preferences_why", widget: "text" }
+          - label: "Preferences — setup steps"
+            name: "preferences_steps"
+            widget: "list"
+            field: { label: "Step", name: "step", widget: "text" }
+          - { label: "Preferences example title", name: "preferences_example_title", widget: "string" }
+          - { label: "Preferences example body", name: "preferences_example_body", widget: "text" }
+          - label: "Preferences tip"
+            name: "preferences_tip"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
               - { label: "Body", name: "body", widget: "text" }
 
       - name: "prompting"
