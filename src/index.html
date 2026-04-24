@@ -598,9 +598,7 @@ function renderTipRaw(label, body, type) {
 }
 
 function renderPrompt(p) {
-    return `<div class="prompt-example" data-body="${escAttr(p.body)}">
-        <span class="label ${esc(p.type)}">${esc(p.title)}</span>
-        <button class="copy-btn" type="button">Copy</button>${esc(p.body)}</div>`;
+    return `<div class="prompt-example" data-body="${escAttr(p.body)}"><span class="label ${esc(p.type)}">${esc(p.title)}</span><button class="copy-btn" type="button">Copy</button>${esc(p.body)}</div>`;
 }
 
 function renderPrompts(prompts) {
@@ -634,10 +632,7 @@ function renderHero(d) {
 function renderGettingStarted(d) {
     const modelsCards = d.models_cards ? renderCards(d.models_cards) : '';
     const thinkingTip = d.thinking_tip ? renderTip(d.thinking_tip) : '';
-    const prefExample = d.preferences_example_body ? `
-        <div class="prompt-example" data-body="${escAttr(d.preferences_example_body)}">
-            <span class="label good">${esc(d.preferences_example_title || 'Example')}</span>
-            <button class="copy-btn" type="button">Copy</button>${esc(d.preferences_example_body)}</div>` : '';
+    const prefExample = d.preferences_example_body ? `<div class="prompt-example" data-body="${escAttr(d.preferences_example_body)}"><span class="label good">${esc(d.preferences_example_title || 'Example')}</span><button class="copy-btn" type="button">Copy</button>${esc(d.preferences_example_body)}</div>` : '';
     const prefTip = d.preferences_tip ? renderTip(d.preferences_tip) : '';
 
     return `<section id="getting-started">
@@ -690,9 +685,7 @@ function renderProjects(d) {
     ).join('');
 
     const examples = (d.instruction_examples || []).map(e =>
-        `<div class="prompt-example" data-body="${escAttr(e.body)}">
-            <span class="label good">${esc(e.title)}</span>
-            <button class="copy-btn" type="button">Copy</button>${esc(e.body)}</div>`
+        `<div class="prompt-example" data-body="${escAttr(e.body)}"><span class="label good">${esc(e.title)}</span><button class="copy-btn" type="button">Copy</button>${esc(e.body)}</div>`
     ).join('');
 
     return `<section id="projects">
@@ -928,17 +921,19 @@ function initSearch() {
         let anyVisible = false;
 
         document.querySelectorAll('section[id]').forEach(s => {
-            const matches = s.textContent.toLowerCase().includes(q);
+            // Search against headings, labels, and card titles only — not full body text
+            const targets = [...s.querySelectorAll('h2, h3, h4, .label, .section-intro')];
+            const searchable = targets.map(el => el.textContent).join(' ').toLowerCase();
+            const matches = searchable.includes(q);
             s.style.display = matches ? '' : 'none';
             if (matches) anyVisible = true;
         });
 
-        // Show/hide dividers based on surrounding sections
         document.querySelectorAll('.divider').forEach(d => {
             const prev = d.previousElementSibling;
             const next = d.nextElementSibling;
             const prevHidden = prev && prev.style.display === 'none';
-            const nextHidden = next && (next.style.display === 'none' || next.id === 'no-results');
+            const nextHidden = next && next.style.display === 'none';
             d.style.display = (prevHidden || nextHidden) ? 'none' : '';
         });
 
