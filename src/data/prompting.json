@@ -1,0 +1,155 @@
+{
+  "heading": "Prompting",
+  "intro": "The quality of Claude's output depends directly on your input. These patterns will help you get consistently useful results.",
+  "patterns": [
+    {
+      "heading": "1. Give context before the task",
+      "body": "Claude knows nothing about you, your company, or your role. The more background you provide, the less time you spend correcting the output.",
+      "tip_label": "Why this matters",
+      "tip_body": "Without context, Claude writes something generic. With context, it writes something you can actually use. The 30 seconds on a better prompt saves 20 minutes of editing.",
+      "examples": [
+        {
+          "type": "bad",
+          "title": "Without context",
+          "body": "Write a variance analysis for Q3."
+        },
+        {
+          "type": "good",
+          "title": "With context",
+          "body": "I'm a Finance Manager at a mid-sized healthcare services company. I report to the CFO and present quarterly variance analysis to the board.\n\nHere is our Q3 actuals vs budget [attach file]. Write a variance analysis that covers:\n- Revenue variance by business unit (we have 3: Consulting, Clinical, and Digital)\n- The top 5 cost lines with the largest absolute variance\n- A brief explanation of what likely drove each variance\n- Recommended management actions where relevant\n\nTone should be professional but direct. The board doesn't want padding. Keep it under 1,500 words."
+        }
+      ]
+    },
+    {
+      "heading": "2. Assign a role",
+      "body": "Telling Claude who it should act as shapes the response significantly.",
+      "tip_label": "",
+      "tip_body": "",
+      "examples": [
+        {
+          "type": "good",
+          "title": "Role examples",
+          "body": "\"You are a senior management consultant writing a client-facing deliverable.\"\n\n\"You are a finance business partner reviewing this budget submission for reasonableness.\"\n\n\"You are an internal comms lead drafting an all-hands email about organisational change.\"\n\n\"You are a project manager writing a status update for a steering committee.\"\n\n\"You are a sceptical CFO reviewing a business case before committing capital.\""
+        }
+      ]
+    },
+    {
+      "heading": "3. Specify the format",
+      "body": "If you have a template or house style, show Claude what it looks like. Claude is very good at matching existing formats.",
+      "tip_label": "",
+      "tip_body": "",
+      "examples": [
+        {
+          "type": "good",
+          "title": "Template matching",
+          "body": "Write a project status update using this exact format:\n\nPROJECT: [name]\nSTATUS: [Green / Amber / Red]\nPERIOD: [date range]\n\nSUMMARY\n[2-3 sentence overview]\n\nPROGRESS THIS PERIOD\n- [bullet points]\n\nRISKS & ISSUES\n| Risk | Impact | Likelihood | Mitigation |\n\nNEXT PERIOD PRIORITIES\n- [bullet points with owners and dates]\n\nHere's the raw information to work from: [paste notes]"
+        },
+        {
+          "type": "good",
+          "title": "Controlling length and tone",
+          "body": "Write this in 300 words or fewer.\nUse short paragraphs, no more than 3 sentences each.\nTone: direct and professional, no filler language.\nAudience: C-suite who will skim this in 2 minutes.\nLead with the conclusion, not the methodology."
+        }
+      ]
+    },
+    {
+      "heading": "4. Iterate in the same conversation",
+      "body": "Your first prompt rarely produces perfection. Stay in the same conversation and give Claude specific feedback.",
+      "tip_label": "When to start over",
+      "tip_body": "If you've gone back and forth many times and the conversation has drifted, start a new chat. Paste the best version so far and give fresh instructions. Long conversations can cause Claude to lose track of earlier guidance.",
+      "examples": [
+        {
+          "type": "neutral",
+          "title": "Useful follow-ups",
+          "body": "\"Too long. Cut it to half the length. Remove the background section entirely.\"\n\n\"Good structure but the tone is too casual. This is going to the audit committee.\"\n\n\"The risk section is too vague. For each risk, add a specific data point or example.\"\n\n\"Rewrite the executive summary assuming the reader already knows the project context.\"\n\n\"This is good. Now create a one-slide version I can use in a deck.\"\n\n\"Add a 'so what' after each finding. What should management actually do about it?\"\n\n\"The numbers in paragraph 3 don't match the spreadsheet. Check cells B14 to B18 again.\""
+        }
+      ]
+    },
+    {
+      "heading": "5. Use Claude for analysis, not just writing",
+      "body": "Claude is strong at reviewing documents, finding patterns, challenging assumptions, and structuring thinking.",
+      "tip_label": "",
+      "tip_body": "",
+      "examples": [
+        {
+          "type": "good",
+          "title": "Challenge a business case",
+          "body": "I've attached a business case for a new CRM implementation. The project team is asking for £2.4m over 3 years.\n\nReview this as if you were a sceptical CFO. Specifically:\n- Are the benefits quantified and realistic? Flag any that look inflated.\n- What costs might be missing? (implementation risk, change management, data migration, ongoing licensing)\n- Is the payback period calculation sound?\n- What questions would you ask the project team before approving?"
+        },
+        {
+          "type": "good",
+          "title": "Compare supplier proposals",
+          "body": "I've attached two supplier proposals for the same scope of work.\n\nCreate a comparison table: Scope coverage, Pricing structure, Team composition, Timeline, Key risks, Gaps.\n\nThen write a short recommendation (under 200 words) on which is stronger and why. Flag anywhere one supplier has committed to something specific and the other has been vague."
+        },
+        {
+          "type": "good",
+          "title": "Stress-test assumptions",
+          "body": "Here is our 3-year revenue forecast [attach]. The assumptions are:\n- 8% organic growth per year\n- 90% client retention\n- 2 new client wins per quarter at average £500k each\n\nChallenge each assumption. What would need to be true for it to hold? What's the downside scenario if each is 20% worse than planned? Build me a sensitivity table."
+        }
+      ]
+    },
+    {
+      "heading": "6. Break complex tasks into steps",
+      "body": "For large tasks, don't try to do everything in one prompt. Build up through stages.",
+      "tip_label": "",
+      "tip_body": "",
+      "examples": [
+        {
+          "type": "good",
+          "title": "Step-by-step approach",
+          "body": "Step 1: \"Here's our strategic plan [attach]. Read it and confirm you understand the three pillars and the KPIs for each.\"\n\nStep 2: \"Now here's our Q3 performance data [attach]. Map the performance data to each pillar and assess whether we're on track.\"\n\nStep 3: \"Draft a board paper presenting this assessment. Use the format I'll paste below.\"\n\nStep 4: \"The CFO reviewed the draft and wants more emphasis on cash flow. Revise with that focus.\"\n\nStep 5: \"Final version is good. Now write a 5-minute verbal briefing I can use to present it.\""
+        }
+      ]
+    }
+  ],
+  "prompt_cards_heading": "7. Ready-to-use prompts for common tasks",
+  "prompt_cards": [
+    {
+      "title": "Meeting preparation",
+      "body": "\"I have a meeting with [person] about [topic] in 2 hours. Here are my notes [paste]. Organise into an agenda, identify the 3 decisions we need to make, and draft the key questions I should ask.\""
+    },
+    {
+      "title": "Email drafting",
+      "body": "\"Draft an email to [recipient] about [topic]. Key message is [x]. Tone: [professional/firm/collaborative]. Keep it under [x] sentences.\""
+    },
+    {
+      "title": "Board paper",
+      "body": "\"Write a board paper recommending [x]. Include: executive summary, background, options considered, recommended option with rationale, financial impact, risks, and next steps.\""
+    },
+    {
+      "title": "Monthly commentary",
+      "body": "\"Here is this month's P&L [attach]. Write the finance commentary: revenue vs budget, key cost movements, EBITDA bridge, cash position. Match last month's style [attach].\""
+    },
+    {
+      "title": "Presentation narrative",
+      "body": "\"My slide deck [attach] has weak narrative flow. Review it, suggest a better story arc, and for each slide write 2-3 sentences of speaker notes.\""
+    },
+    {
+      "title": "Process documentation",
+      "body": "\"I'll describe our month-end close process. Turn it into a document with numbered steps, responsible parties, timelines, and dependencies.\""
+    },
+    {
+      "title": "Stakeholder briefing",
+      "body": "\"Brief [stakeholder] on [topic]. They have [x] minutes and care most about [priorities]. Lead with their concerns, keep detail essential.\""
+    },
+    {
+      "title": "Contract review",
+      "body": "\"Review this contract [attach] commercially. Flag: unusual liability clauses, payment terms differing from Net 30, auto-renewal, termination restrictions, scope ambiguity.\""
+    },
+    {
+      "title": "Competitor analysis",
+      "body": "\"Research [competitor]. Summarise: what they do, key clients, positioning, recent news, and where they overlap with our services. Facts, not speculation.\""
+    },
+    {
+      "title": "Interview preparation",
+      "body": "\"I'm interviewing for [role]. Here's the CV [attach] and JD [attach]. Draft 8 questions: 4 technical, 4 cultural fit. Include what a strong answer looks like.\""
+    },
+    {
+      "title": "Change communication",
+      "body": "\"We're [describe change]. Draft three versions: leadership team (strategic), all-staff (clear and reassuring), affected individuals (empathetic and specific).\""
+    },
+    {
+      "title": "Budget challenge",
+      "body": "\"Here is [team]'s budget submission [attach]. Review as FP&A: flag YoY increases above 5% without justification, headcount changes, discretionary spend, placeholder numbers.\""
+    }
+  ]
+}

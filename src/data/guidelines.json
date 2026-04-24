@@ -1,0 +1,49 @@
+{
+  "heading": "Guidelines",
+  "intro": "What's appropriate to use Claude for, and what isn't.",
+  "do_items": [
+    "Drafting internal documents, emails, and reports",
+    "Analysing uploaded data and documents",
+    "Summarising long documents or meeting notes",
+    "Reviewing and challenging business cases",
+    "Creating presentation content and speaker notes",
+    "Formula help and data work in Excel",
+    "Brainstorming and structuring ideas",
+    "Process documentation",
+    "Research and competitive analysis",
+    "Meeting preparation"
+  ],
+  "dont_items": [
+    "Entering passwords, credentials, or API keys",
+    "Sharing personal data (employees, clients, patients)",
+    "Using output in regulated submissions without review",
+    "Connecting to finance systems of record",
+    "Letting Claude make decisions on your behalf",
+    "Sending output to clients without reviewing it",
+    "Uploading contracts with confidentiality restrictions",
+    "Assuming numerical calculations are always correct"
+  ],
+  "hallucination_intro": "Claude can generate confident-sounding content that is factually wrong. This happens with all large language models. It's most likely when Claude generates facts from memory rather than from a document you've provided.",
+  "risk_cards": [
+    {
+      "title": "Lower risk of errors",
+      "body": "Summarising, restructuring, and analysing documents you've uploaded. Claude is working from source material you can verify."
+    },
+    {
+      "title": "Higher risk of errors",
+      "body": "Generating specific statistics, regulatory references, case law, or historical data from memory. Always verify independently."
+    }
+  ],
+  "tips": [
+    {
+      "type": "info",
+      "label": "Practical safeguard",
+      "body": "Ask Claude: \"Are you confident in that figure? What's your source?\" It will often flag uncertainty if asked. You can also say in your prompt: \"If you're not sure about something, say so rather than guessing.\""
+    },
+    {
+      "type": "",
+      "label": "Rule of thumb",
+      "body": "If you wouldn't paste it into an email to a trusted external consultant, think twice before putting it into Claude."
+    }
+  ]
+}

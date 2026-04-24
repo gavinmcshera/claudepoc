@@ -1,0 +1,68 @@
+{
+  "heading": "Projects & Files",
+  "intro": "Projects give Claude persistent context so you don't have to re-explain your world every conversation.",
+  "what_is_it": "A Project is a workspace where you upload reference files, set standing instructions, and have multiple conversations sharing the same background. Think of it as a briefing pack that stays available across every chat within that Project.",
+  "comparison_rows": [
+    { "regular": "One-off question or quick task", "project": "Ongoing workstream spanning multiple sessions" },
+    { "regular": "No background context needed", "project": "Claude needs your terminology, style, or templates" },
+    { "regular": "You won't refer back to this", "project": "You want to build on previous work" },
+    { "regular": "Simple drafting or brainstorming", "project": "Recurring reporting, client work, or team tasks" }
+  ],
+  "steps": [
+    "Click <strong>Projects</strong> in the left sidebar, then <strong>New Project</strong>.",
+    "Give it a clear name (e.g. \"Q4 Board Reporting\", \"Client ABC\", \"Monthly Close Process\").",
+    "Add <strong>Project Instructions</strong>. This is the standing brief Claude references in every conversation within the Project.",
+    "Upload reference files: templates, past reports, style guides, org charts, glossaries.",
+    "Start a conversation inside the Project. Claude has access to everything you've uploaded."
+  ],
+  "instruction_examples": [
+    {
+      "title": "Finance team example",
+      "body": "You are helping the Finance team at Inizio with recurring reporting and analysis.\n\nKey context:\n- Fiscal year: January to December\n- Reporting currency: GBP\n- Three business units: Consulting, Clinical, and Digital\n- Board meets quarterly; leadership team meets monthly\n- ERP: NetSuite\n\nWhen writing commentary or reports:\n- Professional, concise language. No filler.\n- Always include variance vs budget and vs prior year\n- Flag items more than 10% off budget\n- Use the format from the template files unless told otherwise\n\nWhen working with data files:\n- Look for anomalies before I ask\n- If numbers don't add up or look unusual, flag them proactively\n- Don't round aggressively. Keep to nearest thousand in summaries."
+    },
+    {
+      "title": "Management / strategy example",
+      "body": "You are supporting the Strategy and Transformation team at Inizio.\n\nKey context:\n- Healthcare services company, UK/Ireland/US operations\n- Strategic plan 2024-2027, three pillars: Growth, Efficiency, People\n- 12 transformation workstreams, each with a named lead\n- I report to the COO\n\nPreferences:\n- Structured output: headings, bullets, tables\n- Lead with \"so what\" before the detail\n- When reviewing proposals, be critical. Challenge what might be wrong.\n- Match the tone and format of the example documents uploaded to this Project"
+    }
+  ],
+  "idea_cards": [
+    {
+      "title": "Board reporting",
+      "body": "Upload your board pack template, previous commentary, and data formats. Each month, start a new conversation and attach the latest data."
+    },
+    {
+      "title": "Client engagement",
+      "body": "Upload the proposal, SOW, key correspondence, and templates. Use for all work on that client."
+    },
+    {
+      "title": "Budget cycle",
+      "body": "Upload the timetable, submission template, prior year actuals, and guidelines. Use for reviewing submissions and drafting challenges."
+    },
+    {
+      "title": "Personal productivity",
+      "body": "Upload your writing style examples, meeting note format, preferred email structure. Claude adapts to how you work."
+    }
+  ],
+  "file_cards": [
+    {
+      "title": "Supported formats",
+      "items": [
+        "PDFs (reports, contracts, proposals)",
+        "Word documents (.docx)",
+        "Excel files (.xlsx) and CSVs",
+        "PowerPoint decks (.pptx)",
+        "Images (charts, diagrams, whiteboard photos)"
+      ]
+    },
+    {
+      "title": "Tips for better results",
+      "items": [
+        "Smaller, focused files beat 200-page documents",
+        "Scanned PDFs are harder for Claude to read",
+        "For Excel, make sure data has clear headers",
+        "Tell Claude which sheet or section to focus on",
+        "Name files clearly so you can reference them"
+      ]
+    }
+  ]
+}

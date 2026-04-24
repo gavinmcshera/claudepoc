@@ -1,0 +1,7 @@
+{
+  "heading": "Connectors & Tools",
+  "intro": "Connectors let Claude access external tools like Box, SharePoint, and Google Drive directly in conversation.",
+  "notice_heading": "Coming soon",
+  "notice_p1": "Connectors are going through our internal approval process. We're evaluating which services to enable and under what conditions.",
+  "notice_p2": "In the meantime, upload files directly to conversations and Projects."
+}

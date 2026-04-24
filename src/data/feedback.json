@@ -1,0 +1,24 @@
+{
+  "heading": "Feedback",
+  "intro": "Your feedback shapes how we roll AI tools out more broadly. Findings from this pilot inform policy across all platforms, including ChatGPT and Gemini.",
+  "cards": [
+    {
+      "title": "What worked well",
+      "body": "Tasks where Claude saved real time or produced something better than expected. What did you ask? How long would it have taken without it?"
+    },
+    {
+      "title": "What didn't work",
+      "body": "Tasks where Claude got it wrong, missed the point, or wasn't worth the effort. What happened?"
+    },
+    {
+      "title": "Surprises",
+      "body": "Anything unexpected, good or bad. Did Claude handle something unusually well? Did it make a potentially costly error?"
+    },
+    {
+      "title": "Gaps",
+      "body": "Things you wanted to do but couldn't. Access you needed. Features that would have made a difference."
+    }
+  ],
+  "body": "Use the thumbs up / thumbs down buttons on any Claude response. Thumbs down is especially valuable. You can add a comment when you rate.",
+  "note": "We'll share a simple way to collect broader observations beyond individual responses. Look out for a follow-up from the programme team."
+}

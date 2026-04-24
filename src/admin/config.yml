@@ -1,0 +1,227 @@
+backend:
+  name: github
+  repo: gavinmcshera/claudepoc
+  branch: main
+
+media_folder: src/images
+public_folder: /images
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    files:
+
+      - name: "hero"
+        label: "Hero Banner"
+        file: "src/data/hero.json"
+        fields:
+          - { label: "Badge text", name: "badge", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "text" }
+
+      - name: "getting_started"
+        label: "Getting Started"
+        file: "src/data/getting-started.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            field: { label: "Step", name: "step", widget: "text" }
+          - label: "Interface cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Tip"
+            name: "tip"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Prompt examples"
+            name: "prompts"
+            widget: "list"
+            fields:
+              - { label: "Type", name: "type", widget: "select", options: ["good", "bad", "neutral"] }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+
+      - name: "prompting"
+        label: "Prompting"
+        file: "src/data/prompting.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - label: "Patterns"
+            name: "patterns"
+            widget: "list"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body text", name: "body", widget: "text" }
+              - { label: "Tip label (leave blank if no tip)", name: "tip_label", widget: "string", required: false }
+              - { label: "Tip body (leave blank if no tip)", name: "tip_body", widget: "text", required: false }
+              - label: "Examples"
+                name: "examples"
+                widget: "list"
+                fields:
+                  - { label: "Type", name: "type", widget: "select", options: ["good", "bad", "neutral"] }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+          - { label: "Prompt cards heading", name: "prompt_cards_heading", widget: "string" }
+          - label: "Prompt cards"
+            name: "prompt_cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+
+      - name: "projects"
+        label: "Projects & Files"
+        file: "src/data/projects.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - { label: "What is a Project? (body text)", name: "what_is_it", widget: "text" }
+          - label: "Comparison table rows"
+            name: "comparison_rows"
+            widget: "list"
+            fields:
+              - { label: "Regular chat (left column)", name: "regular", widget: "string" }
+              - { label: "Project (right column)", name: "project", widget: "string" }
+          - label: "Setup steps"
+            name: "steps"
+            widget: "list"
+            field: { label: "Step", name: "step", widget: "text" }
+          - label: "Project instruction examples"
+            name: "instruction_examples"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Project idea cards"
+            name: "idea_cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "File upload cards"
+            name: "file_cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+
+      - name: "excel_pptx"
+        label: "Excel & PowerPoint"
+        file: "src/data/excel-pptx.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - label: "Excel setup steps"
+            name: "excel_steps"
+            widget: "list"
+            field: { label: "Step", name: "step", widget: "text" }
+          - label: "Excel examples"
+            name: "excel_examples"
+            widget: "list"
+            fields:
+              - { label: "Sub-heading", name: "subheading", widget: "string" }
+              - label: "Prompts"
+                name: "prompts"
+                widget: "list"
+                fields:
+                  - { label: "Type", name: "type", widget: "select", options: ["good", "bad", "neutral"] }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+          - label: "PowerPoint setup steps"
+            name: "pptx_steps"
+            widget: "list"
+            field: { label: "Step", name: "step", widget: "text" }
+          - label: "PowerPoint examples"
+            name: "pptx_examples"
+            widget: "list"
+            fields:
+              - { label: "Sub-heading", name: "subheading", widget: "string" }
+              - label: "Prompts"
+                name: "prompts"
+                widget: "list"
+                fields:
+                  - { label: "Type", name: "type", widget: "select", options: ["good", "bad", "neutral"] }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+          - label: "Tip"
+            name: "tip"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+
+      - name: "connectors"
+        label: "Connectors & Tools"
+        file: "src/data/connectors.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - { label: "Holding notice heading", name: "notice_heading", widget: "string" }
+          - { label: "Holding notice paragraph 1", name: "notice_p1", widget: "text" }
+          - { label: "Holding notice paragraph 2", name: "notice_p2", widget: "text" }
+
+      - name: "cowork"
+        label: "Cowork"
+        file: "src/data/cowork.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - { label: "Holding notice heading", name: "notice_heading", widget: "string" }
+          - { label: "Holding notice paragraph 1", name: "notice_p1", widget: "text" }
+          - { label: "Holding notice paragraph 2", name: "notice_p2", widget: "text" }
+
+      - name: "guidelines"
+        label: "Guidelines"
+        file: "src/data/guidelines.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - label: "Do list (appropriate use)"
+            name: "do_items"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Don't list (not appropriate)"
+            name: "dont_items"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - { label: "Hallucination section intro", name: "hallucination_intro", widget: "text" }
+          - label: "Risk cards"
+            name: "risk_cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Tips"
+            name: "tips"
+            widget: "list"
+            fields:
+              - { label: "Type (leave blank for default, use 'info' for blue)", name: "type", widget: "string", required: false }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+
+      - name: "feedback"
+        label: "Feedback"
+        file: "src/data/feedback.json"
+        fields:
+          - { label: "Section heading", name: "heading", widget: "string" }
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - label: "Feedback cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - { label: "Body text (below cards)", name: "body", widget: "text" }
+          - { label: "Note text", name: "note", widget: "text" }

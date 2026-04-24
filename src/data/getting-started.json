@@ -1,0 +1,49 @@
+{
+  "heading": "Getting Started",
+  "intro": "How to access Claude and find your way around the interface.",
+  "steps": [
+    "Go to <strong>claude.ai</strong> and sign in with your company email. SSO should log you in automatically.",
+    "You'll land on the chat interface. Type a message at the bottom and press Enter to start a conversation.",
+    "Your conversation history appears in the left sidebar. Each conversation is separate and independent.",
+    "To start fresh, click <strong>New Chat</strong>. Claude does not carry context between separate conversations."
+  ],
+  "cards": [
+    {
+      "title": "Chat area",
+      "body": "The main window where your conversation happens. You type at the bottom, Claude responds above. Attach files using the paperclip icon."
+    },
+    {
+      "title": "Sidebar",
+      "body": "Your conversation history and Projects. Search past conversations and organise work into Projects for ongoing topics."
+    },
+    {
+      "title": "Model selector",
+      "body": "Choose which model to use. Sonnet is fast and good for most tasks. Opus is slower but stronger on complex reasoning."
+    },
+    {
+      "title": "File attachments",
+      "body": "Click the paperclip to attach PDFs, Word docs, Excel files, images, or CSVs. Claude reads the content and works with it."
+    }
+  ],
+  "tip": {
+    "label": "If you've used ChatGPT",
+    "body": "The interface works similarly. Main differences are Projects (persistent context across conversations), different model names (Sonnet/Opus instead of GPT-4o), and how Claude handles longer documents. You'll pick it up quickly."
+  },
+  "prompts": [
+    {
+      "type": "good",
+      "title": "Finance starting point",
+      "body": "I have a monthly management accounts pack that I present to the board. The pack includes P&L, balance sheet, cash flow, and a narrative commentary. I spend about 3 hours writing the commentary each month.\n\nHere is last month's commentary [paste it]. And here is this month's data [attach the file].\n\nDraft this month's commentary in the same style and format. Flag anything that looks unusual compared to last month."
+    },
+    {
+      "type": "good",
+      "title": "Management starting point",
+      "body": "I need to prepare a briefing note for our CEO on the Q3 operational performance of our three business units. I'll give you the KPI dashboards for each unit.\n\nFor each unit, summarise the top 3 things going well, the top 3 concerns, and any metrics that have moved more than 10% vs prior quarter. Keep the whole thing under 2 pages.\n\n[Attach the dashboards]"
+    },
+    {
+      "type": "good",
+      "title": "Quick productivity win",
+      "body": "I have a meeting in 30 minutes with the Head of Procurement about consolidating our software vendors. Here are my rough notes [paste them].\n\nTurn these into:\n1. A clear agenda with time allocations\n2. The 3 key decisions we need to make\n3. A list of questions I should ask to understand their constraints"
+    }
+  ]
+}

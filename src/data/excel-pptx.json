@@ -1,0 +1,99 @@
+{
+  "heading": "Excel & PowerPoint",
+  "intro": "Claude has plugins for Excel and PowerPoint that let you use AI directly inside those applications.",
+  "excel_steps": [
+    "Open Excel, go to <strong>Insert &gt; Get Add-ins</strong>.",
+    "Search for <strong>\"Claude for Excel\"</strong> and install it.",
+    "Sign in with your Claude account.",
+    "Claude appears as a sidebar panel. Select data and ask questions."
+  ],
+  "excel_examples": [
+    {
+      "subheading": "Formula help",
+      "prompts": [
+        {
+          "type": "good",
+          "title": "Write a formula",
+          "body": "I have dates in A2:A500 and revenue in B2:B500.\nWrite a formula that calculates the average monthly revenue for the last 12 months only.\nExplain how it works so I can adapt it later."
+        },
+        {
+          "type": "good",
+          "title": "Debug a formula",
+          "body": "This VLOOKUP is returning #N/A for about 30% of the rows but the values exist in the lookup table. What could be causing this?\nFormula: =VLOOKUP(A2, Sheet2!A:C, 3, FALSE)"
+        }
+      ]
+    },
+    {
+      "subheading": "Data cleaning",
+      "prompts": [
+        {
+          "type": "good",
+          "title": "Standardise names",
+          "body": "Column C has company names in inconsistent formats: \"ACME Ltd\", \"Acme Limited\", \"acme ltd.\", \"ACME LTD\".\nCreate a formula or process to standardise them all to proper case with \"Ltd\" at the end."
+        },
+        {
+          "type": "good",
+          "title": "Find duplicates",
+          "body": "I suspect duplicate invoices in this data. Columns: Invoice Number, Supplier, Date, Amount.\nFind: exact duplicates (same invoice number), likely duplicates (same supplier + amount within 7 days), and any invoice numbers not matching our format (INV-XXXXXX)."
+        }
+      ]
+    },
+    {
+      "subheading": "Analysis",
+      "prompts": [
+        {
+          "type": "good",
+          "title": "Expense analysis",
+          "body": "Selected range A1:F200 contains Q3 expense claims.\nColumns: Employee, Department, Date, Category, Amount, Approved By.\n\nSummarise:\n- Total spend by department\n- Top 5 categories by value\n- Any claims over £5,000\n- Average claim value by department\n- Which approver is signing off the most spend"
+        },
+        {
+          "type": "good",
+          "title": "Categorisation",
+          "body": "Column D has free-text bank transaction descriptions.\nCategorise each into: Payroll, Rent, Professional Fees, Software, Travel, Marketing, Utilities, or Other.\nPut the category in column E. Where uncertain, put \"Review\" and highlight the row."
+        }
+      ]
+    }
+  ],
+  "pptx_steps": [
+    "Open PowerPoint, go to <strong>Insert &gt; Get Add-ins</strong>.",
+    "Search for <strong>\"Claude for PowerPoint\"</strong> and install it.",
+    "Sign in with your Claude account.",
+    "Claude appears as a sidebar to help with content, notes, and structure."
+  ],
+  "pptx_examples": [
+    {
+      "subheading": "Building decks",
+      "prompts": [
+        {
+          "type": "good",
+          "title": "From a document",
+          "body": "I have a 15-page strategy document. Turn it into a 10-slide executive summary:\n\n- Slide 1: Title\n- Slide 2: Executive summary (key message in 3 bullets)\n- Slides 3-5: One per strategic pillar with objectives and KPIs\n- Slides 6-8: Key initiatives with timelines\n- Slide 9: Investment and expected returns\n- Slide 10: Next steps and decisions needed\n\nNo full sentences on slides. Headline + 3-4 bullets per slide."
+        },
+        {
+          "type": "good",
+          "title": "Speaker notes",
+          "body": "For each of these 12 slides, write speaker notes that:\n- Explain the key point in 2-3 sentences\n- Include a transition to the next slide\n- Note likely audience questions\n\nAudience is senior leadership. They want implications, not just data."
+        }
+      ]
+    },
+    {
+      "subheading": "Improving existing decks",
+      "prompts": [
+        {
+          "type": "good",
+          "title": "Cut text down",
+          "body": "This slide has too much text. Rewrite to follow the 6x6 rule: no more than 6 bullets, no more than 6 words per bullet. Keep the core message.\n\nCurrent slide text: [paste]"
+        },
+        {
+          "type": "good",
+          "title": "Fix the story arc",
+          "body": "Here are my slide titles in order:\n1. Q3 Results Overview  2. Revenue by Region  3. Market Context  4. Our Strategy  5. Cost Breakdown  6. Headcount Changes  7. Risks  8. Next Steps\n\nThe narrative feels disjointed. Suggest better ordering and any slides to add or remove to flow from \"what happened\" to \"why\" to \"what we do about it\"."
+        }
+      ]
+    }
+  ],
+  "tip": {
+    "label": "Plugins vs browser",
+    "body": "The plugins are best for quick, in-context tasks: formula help, text editing, speaker notes. For larger jobs like building a full deck from a document or deep data analysis, the browser gives you more room to iterate."
+  }
+}
