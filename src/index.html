@@ -486,6 +486,36 @@
             color: var(--mid-grey);
         }
 
+        /* ── EXTERNAL LINKS BAR ── */
+        .learn-more-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 20px;
+            padding: 12px 16px;
+            background: var(--off-white);
+            border-radius: 6px;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+
+        .learn-more-bar span {
+            font-weight: 600;
+            color: var(--mid-grey);
+        }
+
+        .learn-more-bar a {
+            color: var(--coral-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .learn-more-bar a:hover {
+            color: var(--coral);
+            text-decoration: underline;
+        }
+
         /* ── MOBILE ── */
         @media (max-width: 780px) {
             .nav-links { display: none; }
@@ -645,9 +675,18 @@ function renderGettingStarted(d) {
         <h3>Your first conversation</h3>
         <p>Start with something real from your day-to-day work. It's most useful when given a genuine task with real context.</p>
         ${renderPrompts(d.prompts)}
+        <div class="learn-more-bar">
+            <span>Anthropic Academy:</span>
+            <a href="https://anthropic.skilljar.com/claude-101" target="_blank" rel="noopener">Claude 101 course →</a>
+            <a href="https://support.claude.com/en/articles/12997377-getting-started-with-claude-ai" target="_blank" rel="noopener">Official getting started guide →</a>
+        </div>
         ${d.models_heading ? `<h3>${esc(d.models_heading)}</h3>` : ''}
         ${d.models_intro ? `<p>${esc(d.models_intro)}</p>` : ''}
         ${modelsCards}
+        <div class="learn-more-bar">
+            <a href="https://claude.com/resources/tutorials/getting-the-most-out-of-sonnet-4-5-in-claude-ai" target="_blank" rel="noopener">Get the most from Sonnet →</a>
+            <a href="https://claude.com/resources/tutorials/get-the-most-from-claude-opus-4-6" target="_blank" rel="noopener">Get the most from Opus →</a>
+        </div>
         ${d.thinking_heading ? `<h3>${esc(d.thinking_heading)}</h3>` : ''}
         ${d.thinking_body ? `<p>${esc(d.thinking_body)}</p>` : ''}
         ${thinkingTip}
@@ -676,6 +715,9 @@ function renderPrompting(d) {
         ${patterns}
         <h3>${esc(d.prompt_cards_heading)}</h3>
         <div class="card-grid">${cards}</div>
+        <div class="learn-more-bar">
+            <a href="https://claude.com/resources/use-cases" target="_blank" rel="noopener">Explore more Claude use cases on anthropic.com →</a>
+        </div>
     </section>`;
 }
 
@@ -724,9 +766,15 @@ function renderExcelPptx(d) {
         <p class="section-intro">${esc(d.intro)}</p>
         <h3>Claude for Excel</h3>
         ${renderSteps(d.excel_steps)}
+        <div class="learn-more-bar">
+            <a href="https://claude.com/claude-for-excel" target="_blank" rel="noopener">Claude for Excel official page →</a>
+        </div>
         ${excelEx}
         <h3>Claude for PowerPoint</h3>
         ${renderSteps(d.pptx_steps)}
+        <div class="learn-more-bar">
+            <a href="https://claude.com/claude-for-powerpoint" target="_blank" rel="noopener">Claude for PowerPoint official page →</a>
+        </div>
         ${pptxEx}
         ${renderTip(d.tip)}
     </section>`;
@@ -764,6 +812,9 @@ function renderGuidelines(d) {
         <p>${esc(d.hallucination_intro)}</p>
         ${renderCards(d.risk_cards)}
         ${tips}
+        <div class="learn-more-bar">
+            <a href="https://support.claude.com/en/" target="_blank" rel="noopener">Claude support centre →</a>
+        </div>
     </section>`;
 }
 
