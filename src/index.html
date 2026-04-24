@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claude Learning Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #1B1B3A;
-            --navy-light: #2A2A52;
-            --coral: #E8604C;
-            --coral-light: #FCEAE7;
-            --coral-dark: #C94A38;
+            --navy: #2a034c;
+            --navy-light: #451284;
+            --coral: #00ca9f;
+            --coral-light: rgba(0, 202, 159, 0.1);
+            --coral-dark: #005559;
             --white: #FFFFFF;
-            --off-white: #F5F5F7;
-            --light-grey: #EEEEF0;
-            --mid-grey: #6B7280;
-            --border: #DCDCE0;
-            --text: #1B1B3A;
+            --off-white: #E2E2F2;
+            --light-grey: #E2E2F2;
+            --mid-grey: #616172;
+            --border: #E2E2F2;
+            --text: #414156;
             --nav-height: 64px;
         }
 
@@ -30,7 +30,7 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: calibri, sans-serif;
             color: var(--text);
             background: var(--white);
             line-height: 1.7;
@@ -51,8 +51,9 @@
         }
 
         .nav-logo {
+            font-family: 'Montserrat', Arial, sans-serif;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--white);
             text-decoration: none;
             margin-right: 48px;
@@ -79,8 +80,8 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.12);
+            color: var(--coral);
+            background: rgba(0, 202, 159, 0.12);
         }
 
         .nav-toggle {
@@ -115,7 +116,7 @@
 
         /* --- HERO --- */
         .hero {
-            background: var(--navy);
+            background: linear-gradient(135deg, #451284 0%, #2a034c 100%);
             padding: 80px 24px 64px;
             margin: 0 -24px 48px;
             color: var(--white);
@@ -127,9 +128,10 @@
         }
 
         .hero h1 {
+            font-family: 'Montserrat', Arial, sans-serif;
             font-size: 44px;
-            font-weight: 700;
-            line-height: 1.15;
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
         }
@@ -144,9 +146,9 @@
         .hero .badge {
             display: inline-block;
             background: var(--coral);
-            color: var(--white);
+            color: var(--navy);
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             padding: 5px 14px;
             border-radius: 4px;
             margin-bottom: 24px;
@@ -158,6 +160,7 @@
         section { margin-bottom: 56px; }
 
         section h2 {
+            font-family: 'Montserrat', Arial, sans-serif;
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 6px;
@@ -172,6 +175,7 @@
         }
 
         section h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
             font-size: 17px;
             font-weight: 600;
             margin: 36px 0 10px;
@@ -310,14 +314,14 @@
         }
 
         .do-col h4 {
-            color: #059669;
+            color: var(--coral);
             font-size: 13px; font-weight: 600;
             text-transform: uppercase; letter-spacing: 0.5px;
             margin-bottom: 12px;
         }
 
         .dont-col h4 {
-            color: var(--coral);
+            color: #b502b1;
             font-size: 13px; font-weight: 600;
             text-transform: uppercase; letter-spacing: 0.5px;
             margin-bottom: 12px;
@@ -328,8 +332,8 @@
             list-style: none; padding-left: 18px; position: relative;
         }
 
-        .do-col li::before { content: "\2713"; color: #059669; position: absolute; left: 0; font-weight: 700; }
-        .dont-col li::before { content: "\2717"; color: var(--coral); position: absolute; left: 0; font-weight: 700; }
+        .do-col li::before { content: "\2713"; color: var(--coral); position: absolute; left: 0; font-weight: 700; }
+        .dont-col li::before { content: "\2717"; color: #b502b1; position: absolute; left: 0; font-weight: 700; }
 
         /* --- STEPS --- */
         .steps {
