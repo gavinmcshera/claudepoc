@@ -77,8 +77,8 @@
     "Write your instructions in plain English. No special formatting needed.",
     "Save. These apply to all your future conversations automatically."
   ],
-  "preferences_example_title": "Example preferences",
-  "preferences_example_body": "Do not use em-dashes.\nDo not over elaborate.\nKeep the language natural. Avoid sales or sensational language.\nDon't use filler affirmations like 'good question' or 'great point'. Just give me the answer.",
+  "preferences_example_title": "Example preferences — writing and citation",
+  "preferences_example_body": "WRITING STYLE\nWrite for a senior business audience. Use UK spelling and a concise, professional tone. Keep responses practical, structured and easy to reuse in emails, decks, agendas and discussion papers.\n\nLANGUAGE AND GRAMMAR\nKeep sentences short and clear. No em-dashes, no Oxford comma in lists, no ampersands. No icons or emoji in any context.\n\nTONE\nAvoid hype, marketing language and unnecessary technical detail. Translate complex topics into business language. Be clear about implications, risks and trade-offs. No filler affirmations like \"great question\" or \"certainly\". Just answer.\n\nREWRITING\nPreserve my intent. Make wording sharper, not more corporate.\n\nSTRATEGIC QUESTIONS\nGive a recommendation, not just options.\n\nLENGTH AND FORMAT\nDefault to short sections and simple lists. Do not over-explain. If I want more detail I will ask.\n\nCITATIONS\nUse numbered hyperlinked citations [1], [2] and include a References section with source name, URL and date. Use exact URLs from search results. Do not invent URLs.",
   "preferences_tip": {
     "label": "Where to start",
     "body": "Begin with 3-4 clear instructions and add more as you notice patterns in Claude's default behaviour that don't suit you. Think about: tone (formal or conversational), length (brief or detailed), structure (bullets or prose), and specific habits to avoid. The more specific you are, the more consistent the results."
